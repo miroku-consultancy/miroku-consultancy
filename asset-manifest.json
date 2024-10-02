@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.517f9cf6.css",
-    "main.js": "/static/js/main.6354129e.js",
+    "main.css": "/static/css/main.705efe3a.css",
+    "main.js": "/static/js/main.44c8a397.js",
     "static/js/453.358fe38c.chunk.js": "/static/js/453.358fe38c.chunk.js",
+    "static/media/cloud-solutions.jfif": "/static/media/cloud-solutions.4d44a24bb251d7b3ff3a.jfif",
+    "static/media/custom-software.jfif": "/static/media/custom-software.7bc1c58b1a4c7289d434.jfif",
+    "static/media/agile-transformation.jfif": "/static/media/agile-transformation.8fc5e7adc02fa7185c37.jfif",
+    "static/media/it-strategy.jfif": "/static/media/it-strategy.de4bab286f10e6ac7bf6.jfif",
     "index.html": "/index.html",
-    "main.517f9cf6.css.map": "/static/css/main.517f9cf6.css.map",
-    "main.6354129e.js.map": "/static/js/main.6354129e.js.map",
+    "main.705efe3a.css.map": "/static/css/main.705efe3a.css.map",
+    "main.44c8a397.js.map": "/static/js/main.44c8a397.js.map",
     "453.358fe38c.chunk.js.map": "/static/js/453.358fe38c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.517f9cf6.css",
-    "static/js/main.6354129e.js"
+    "static/css/main.705efe3a.css",
+    "static/js/main.44c8a397.js"
   ]
 }
