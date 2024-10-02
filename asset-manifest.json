@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/miroku-consultancy/static/css/main.517f9cf6.css",
+    "main.js": "/miroku-consultancy/static/js/main.826bcae5.js",
+    "static/js/453.358fe38c.chunk.js": "/miroku-consultancy/static/js/453.358fe38c.chunk.js",
+    "index.html": "/miroku-consultancy/index.html",
+    "main.517f9cf6.css.map": "/miroku-consultancy/static/css/main.517f9cf6.css.map",
+    "main.826bcae5.js.map": "/miroku-consultancy/static/js/main.826bcae5.js.map",
+    "453.358fe38c.chunk.js.map": "/miroku-consultancy/static/js/453.358fe38c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.517f9cf6.css",
+    "static/js/main.826bcae5.js"
+  ]
+}
