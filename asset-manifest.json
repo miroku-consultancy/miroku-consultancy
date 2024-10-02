@@ -1,19 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.705efe3a.css",
-    "main.js": "/static/js/main.44c8a397.js",
+    "main.css": "/static/css/main.56641fc9.css",
+    "main.js": "/static/js/main.49b9f5d8.js",
     "static/js/453.358fe38c.chunk.js": "/static/js/453.358fe38c.chunk.js",
+    "static/media/team.jfif": "/static/media/team.4c5aa90588413d77b678.jfif",
     "static/media/cloud-solutions.jfif": "/static/media/cloud-solutions.4d44a24bb251d7b3ff3a.jfif",
     "static/media/custom-software.jfif": "/static/media/custom-software.7bc1c58b1a4c7289d434.jfif",
     "static/media/agile-transformation.jfif": "/static/media/agile-transformation.8fc5e7adc02fa7185c37.jfif",
+    "static/media/header-background1.jfif": "/static/media/header-background1.a251f10cb6518dc3c3d2.jfif",
+    "static/media/logo.jfif": "/static/media/logo.ba34a4d3fb04a36d9c96.jfif",
+    "static/media/office.jfif": "/static/media/office.d2ceaa42f4b4afae0229.jfif",
     "static/media/it-strategy.jfif": "/static/media/it-strategy.de4bab286f10e6ac7bf6.jfif",
+    "static/media/contact-background1.jfif": "/static/media/contact-background1.d313e3a3a3552deb2a60.jfif",
+    "static/media/email-icon.jfif": "/static/media/email-icon.78261a4d7e29f5cf56aa.jfif",
     "index.html": "/index.html",
-    "main.705efe3a.css.map": "/static/css/main.705efe3a.css.map",
-    "main.44c8a397.js.map": "/static/js/main.44c8a397.js.map",
+    "main.56641fc9.css.map": "/static/css/main.56641fc9.css.map",
+    "main.49b9f5d8.js.map": "/static/js/main.49b9f5d8.js.map",
     "453.358fe38c.chunk.js.map": "/static/js/453.358fe38c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.705efe3a.css",
-    "static/js/main.44c8a397.js"
+    "static/css/main.56641fc9.css",
+    "static/js/main.49b9f5d8.js"
   ]
 }
