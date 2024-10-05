@@ -1,23 +1,43 @@
+// src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importing routing components
 import Header from './components/Header';
 import Services from './components/Services';
 import About from './components/About';
 import Contact from './components/Contact';
+import Industry from './components/Industries'; // Import the Industry component
+import Solutions from './components/Solutions'; // Import the Solutions component
+import Training from './components/Training';
 import './App.css';
 
 const App = () => {
     return (
-        <div>
+        <Router>
             <Header />
             <main>
-                <Services />
-                <About />
-                <Contact />
+            <section id="services">
+                    <Services />
+                </section>
+                <section id="industries">
+                    <Industry />
+                </section>
+                <section id="solutions">
+                    <Solutions />
+                </section>
+                <section id="training">
+                    <Training />
+                </section>
+                <section id="about">
+                    <About />
+                </section>
+                <section id="contact">
+                    <Contact />
+                </section>
             </main>
             <footer>
                 <p>&copy; 2024 Miroku Consultancy Services. All rights reserved.</p>
             </footer>
-        </div>
+        </Router>
     );
 };
 

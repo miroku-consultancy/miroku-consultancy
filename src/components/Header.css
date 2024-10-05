@@ -1,45 +1,138 @@
 .header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background: url('../assets/images/header-background1.jfif') no-repeat center center/cover;
-    padding: 40px 20px;
-    color: #fff; /* Text color */
-    text-align: center;
+    padding: 15px 30px;
+    background-color: #333; 
+    color: white; /* Light text color */
 }
 
 .logo-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Center logo and text vertically */
 }
 
 .logo {
-    width: 50px; /* Adjust size as needed */
+    width: 50px; /* Adjust according to your logo size */
     height: auto;
-    margin-right: 15px;
+    margin-right: 15px; /* Space between logo and text */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column; /* Stack short and long name vertically */
+}
+
+.short-name {
+    margin: 0; /* Remove default margin */
+    font-size: 24px; /* Adjust as necessary */
+    font-weight: bold;
+    font-family: 'Pacifico', cursive; /* Use the imported font */
+}
+
+.long-name {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Adjust as necessary */
+    color: #FFD700; /* Color for long name */
+}
+
+nav {
+    flex: 2;
 }
 
 .nav-list {
     list-style: none;
-    padding: 0;
     display: flex;
-    gap: 20px; /* Space between items */
-    margin-top: 20px;
+    justify-content: center;
+    gap: 30px;
+    position: relative; /* Added for absolute positioning of dropdown */
 }
 
 .nav-list li {
-    display: inline;
+    position: relative; /* Required for dropdown positioning */
 }
 
-.nav-list a {
-    color: #fff; /* Link color */
-    text-decoration: none;
-    font-size: 18px; /* Font size */
-    transition: color 0.3s ease; /* Smooth transition */
+.nav-list button {
+    background: none;
+    border: none;
+    color: white; /* Light text color */
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px 15px; /* Add padding for better touch area */
+    text-align: left; /* Align text to the left */
+    transition: all 0.3s ease;
 }
 
-.nav-list a:hover {
-    color: #ffcc00; /* Color change on hover */
+.nav-list button:hover,
+.nav-list button:focus {
+    background-color: rgba(255, 215, 0, 0.2); /* Light gold background on hover */
 }
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #444; /* Slightly lighter dark background for dropdown */
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    top: 100%; /* Position below the nav item */
+    left: 50%;
+    transform: translateX(-50%); /* Center it */
+    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 1; /* Ensure it appears above other elements */
+}
+
+.nav-list li:hover .dropdown-content {
+    display: block; /* Show on hover */
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-list button {
+        padding: 10px; /* Add padding for touch targets */
+    }
+}
+.logo-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    width: 100%; /* Ensure it takes full width */
+}
+
+.short-name {
+    font-size: 48px; /* Adjust font size */
+    font-weight: bold;
+    font-family: 'Pacifico', cursive; /* Cursive font for short name */
+    margin-right: 20px; /* Add some space between short name and long name */
+}
+
+.long-name {
+    font-size: 13px; /* Adjust size for long name */
+    color: #ffe600; /* Color for long name */
+    font-weight: normal; /* Normal weight for long name */
+    text-align: left; /* Align text to the left */
+}
+
+.long-name span {
+    display: block; /* Each span will be on a new line */
+}
+
+
+
+
+
+
+
+
+
+

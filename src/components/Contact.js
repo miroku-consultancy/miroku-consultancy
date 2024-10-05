@@ -1,5 +1,5 @@
 import React from 'react';
-import contactBackground from '../assets/images/contact-background1.jfif'; // Replace with your actual image path
+import contactBackground from '../assets/images/contact-background.jfif'; // Replace with your actual image path
 import emailIcon from '../assets/images/email-icon.jfif'; // Replace with your actual image path
 
 const Contact = () => {

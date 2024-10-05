@@ -1,3 +1,12 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* App Container */
 .App {
   text-align: center;
 }
@@ -13,6 +22,7 @@
   }
 }
 
+/* Header Styles */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,25 +34,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
 header {
   background: #007BFF;
   color: #fff;
@@ -50,6 +41,7 @@ header {
   text-align: center;
 }
 
+/* Navigation Styles */
 nav ul {
   list-style: none;
   padding: 0;
@@ -63,17 +55,53 @@ nav ul li {
 nav a {
   color: #fff;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
+nav a:hover {
+  color: #FFD700; /* Change color on hover */
+}
+
+/* Section Styles */
 section {
   padding: 20px;
   margin: 10px;
   border: 1px solid #ccc;
 }
 
+/* Footer Styles */
 footer {
   text-align: center;
   padding: 10px 0;
   background: #f4f4f4;
   position: relative;
+}
+
+/* Animation */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
+
+  nav ul {
+    display: block; /* Stack navigation links vertically on smaller screens */
+  }
+
+  nav ul li {
+    margin: 5px 0; /* Add spacing between links */
+  }
+
+  section {
+    margin: 5px; /* Reduce margin for sections */
+  }
 }

@@ -6,6 +6,7 @@ const About = () => {
     return (
         <section id="about" style={styles.aboutSection}>
             <h2>About Us</h2>
+            {/* Team Section */}
             <div style={styles.content}>
                 <div style={styles.textContainer}>
                     <p>
@@ -19,8 +20,18 @@ const About = () => {
                     <img src={teamImage} alt="Our Team" style={styles.image} />
                 </div>
             </div>
-            <div style={styles.officeContainer}>
-                <img src={officeImage} alt="Our Office" style={styles.officeImage} />
+            {/* Office Section */}
+            <div style={styles.content}>
+                <div style={styles.textContainer}>
+                    <p style={styles.officeTitle}>Our Office</p>
+                    <p style={styles.officeSubtitle}>Where innovation meets collaboration.</p>
+                    <p>
+                        Our office is designed to foster creativity and teamwork, equipped with state-of-the-art technology and flexible workspaces. We believe that a collaborative environment enhances productivity and encourages innovative thinking. From open meeting areas to quiet zones, our office caters to various working styles, ensuring our team can thrive in their projects. Join us in a space where ideas come to life and partnerships grow.
+                    </p>
+                </div>
+                <div style={styles.imageContainer}>
+                    <img src={officeImage} alt="Our Office" style={styles.officeImage} />
+                </div>
             </div>
         </section>
     );
@@ -36,7 +47,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'flex-start', // Align items to the top
         marginBottom: '40px',
     },
     textContainer: {
@@ -50,12 +61,17 @@ const styles = {
         width: '100%',
         borderRadius: '8px',
     },
-    officeContainer: {
-        marginTop: '20px',
-    },
     officeImage: {
         width: '100%',
         borderRadius: '8px',
+    },
+    officeTitle: {
+        fontSize: '1.5em', // Larger font size for the title
+        fontWeight: 'bold',
+    },
+    officeSubtitle: {
+        fontSize: '1.2em', // Larger font size for the subtitle
+        marginBottom: '10px',
     },
 };
 
