@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.45690af5.css",
-    "main.js": "/static/js/main.717e4763.js",
+    "main.css": "/static/css/main.56d3fb84.css",
+    "main.js": "/static/js/main.129ffe08.js",
     "static/js/453.358fe38c.chunk.js": "/static/js/453.358fe38c.chunk.js",
     "static/media/team.jfif": "/static/media/team.4c5aa90588413d77b678.jfif",
+    "static/media/logo.jpeg": "/static/media/logo.830b5021b9173544f542.jpeg",
     "static/media/WebsiteImg.jfif": "/static/media/WebsiteImg.7e9627c8c85654079a29.jfif",
     "static/media/react.jfif": "/static/media/react.47e8c805309979ff1424.jfif",
     "static/media/web-app.jfif": "/static/media/web-app.d3a22726c431901fc8eb.jfif",
@@ -12,7 +13,6 @@
     "static/media/cloud-solutions.jfif": "/static/media/cloud-solutions.4d44a24bb251d7b3ff3a.jfif",
     "static/media/custom-software.jfif": "/static/media/custom-software.7bc1c58b1a4c7289d434.jfif",
     "static/media/agile-transformation.jfif": "/static/media/agile-transformation.8fc5e7adc02fa7185c37.jfif",
-    "static/media/logo.jfif": "/static/media/logo.ba34a4d3fb04a36d9c96.jfif",
     "static/media/office.jfif": "/static/media/office.d2ceaa42f4b4afae0229.jfif",
     "static/media/erp.jfif": "/static/media/erp.73adaec81e412fab0f2f.jfif",
     "static/media/api.jfif": "/static/media/api.3d26f577401a3c30b687.jfif",
@@ -24,12 +24,12 @@
     "static/media/contact-background.jfif": "/static/media/contact-background.4e11cb538ad4441ccfa1.jfif",
     "static/media/dotnet.jfif": "/static/media/dotnet.e70e968f19daf84bfb7b.jfif",
     "index.html": "/index.html",
-    "main.45690af5.css.map": "/static/css/main.45690af5.css.map",
-    "main.717e4763.js.map": "/static/js/main.717e4763.js.map",
+    "main.56d3fb84.css.map": "/static/css/main.56d3fb84.css.map",
+    "main.129ffe08.js.map": "/static/js/main.129ffe08.js.map",
     "453.358fe38c.chunk.js.map": "/static/js/453.358fe38c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.45690af5.css",
-    "static/js/main.717e4763.js"
+    "static/css/main.56d3fb84.css",
+    "static/js/main.129ffe08.js"
   ]
 }
