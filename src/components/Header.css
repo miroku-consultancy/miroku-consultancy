@@ -2,25 +2,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 10px 20px;
     background-color: #333; 
-    color: white; /* Light text color */
+    color: #fff; /* Light text color */
 }
 
 .logo-container {
     display: flex;
     align-items: center; /* Center logo and text vertically */
+    flex-grow: 1;
 }
 
 .logo {
     width: 130px; /* Adjust according to your logo size */
     height: auto;
-    margin-right: 15px; /* Space between logo and text */
+   
 }
 
 .logo-text {
     display: flex;
     flex-direction: column; /* Stack short and long name vertically */
+    margin-left: 10px; /* Space between logo and text */
 }
 
 .short-name {
@@ -130,10 +132,10 @@ nav {
 }
 .menu-toggle {
     display: none; /* Hide by default, show on small screens */
-    background-color: transparent;
+    background-color: #333; /* Match with header background */
     border: none;
     color: #fff; /* Change color to fit your theme */
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     margin-left: auto; /* Push button to the right */
 }
