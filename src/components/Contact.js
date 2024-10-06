@@ -7,6 +7,10 @@ const Contact = () => {
         <section id="contact" style={styles.contactSection}>
             <h2>Contact Us</h2>
             <p>If you're interested in our services, please reach out:</p>
+            <div style={styles.addressInfo}>
+                <p>Registered Office:</p>
+                <p style={styles.address}>428 Bhatia Road, Daulatpura, Ghaziabad, Uttar pradesh, India - 201001</p>
+            </div>
             <div style={styles.contactInfo}>
                 <img src={emailIcon} alt="Email Icon" style={styles.icon} />
                 <p>Email: <a href="mailto:mirokuconsultancyservices@gmail.com" style={styles.emailLink}>mirokuconsultancyservices@gmail.com</a></p>
@@ -38,6 +42,12 @@ const styles = {
     emailLink: {
         color: '#fff', // Change to fit your theme
         textDecoration: 'underline',
+    },
+    addressInfo: {
+        marginTop: '20px', // Space between email and address
+    },
+    address: {
+        fontSize: '1.2em', // Adjust the font size if needed
     },
 };
 

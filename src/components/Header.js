@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Header.css';
-import logo from '../assets/images/logo.jfif'; // Optional logo image
+import logo from '../assets/images/logo.jpeg'; // Optional logo image
 
 const Header = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
+    const [isFormVisible, setIsFormVisible] = useState(false); // State to manage form visibility
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
 
     const handleMouseEnter = (index) => {
         setExpandedIndex(index);
@@ -11,6 +13,10 @@ const Header = () => {
 
     const handleMouseLeave = () => {
         setExpandedIndex(null);
+    };
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
     const navItems = [
@@ -44,6 +50,11 @@ const Header = () => {
             id: '#contact',
             description: ['mirokuconsultancyservices@gmail.com'],
         },
+        {
+            name: 'Connect',
+            id: '#SubmitForm',
+            description: ['Query with us'],
+        },
     ];
 
     return (
@@ -58,9 +69,14 @@ const Header = () => {
                         <span>SERVICES</span>
                     </div>
                 </div>
+                <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
+                    {isMenuOpen ? '✖' : '☰'} {/* Cross for close, Menu for open */}
+                </button>
             </div>
 
-            <nav>
+
+
+            <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className="nav-list">
                     {navItems.map((item, index) => (
                         <li

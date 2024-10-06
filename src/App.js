@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Industry from './components/Industries'; // Import the Industry component
 import Solutions from './components/Solutions'; // Import the Solutions component
 import Training from './components/Training';
+import SubmitForm from './components/SubmitForm';
 import './App.css';
 
 const App = () => {
@@ -32,6 +33,9 @@ const App = () => {
                 </section>
                 <section id="contact">
                     <Contact />
+                </section>
+                <section id="SubmitForm">
+                    <SubmitForm />
                 </section>
             </main>
             <footer>

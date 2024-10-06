@@ -6,7 +6,7 @@
 .training-list {
     display: flex;
     flex-wrap: nowrap; /* Ensures all items stay in a single row */
-    overflow-x: auto; /* Allows horizontal scrolling if necessary */
+    /* overflow-x: auto;  */
     gap: 20px; /* Space between items */
 }
 

@@ -13,7 +13,7 @@
 }
 
 .logo {
-    width: 50px; /* Adjust according to your logo size */
+    width: 130px; /* Adjust according to your logo size */
     height: auto;
     margin-right: 15px; /* Space between logo and text */
 }
@@ -51,6 +51,7 @@ nav {
 .nav-list li {
     position: relative; /* Required for dropdown positioning */
 }
+
 
 .nav-list button {
     background: none;
@@ -107,6 +108,7 @@ nav {
     display: flex;
     align-items: center; /* Center vertically */
     width: 100%; /* Ensure it takes full width */
+    margin-right: 10px;
 }
 
 .short-name {
@@ -126,7 +128,45 @@ nav {
 .long-name span {
     display: block; /* Each span will be on a new line */
 }
+.menu-toggle {
+    display: none; /* Hide by default, show on small screens */
+    background-color: transparent;
+    border: none;
+    color: #fff; /* Change color to fit your theme */
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: auto; /* Push button to the right */
+}
 
+/* Show the toggle button on small screens */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+        margin-left: auto; 
+    }
+    
+    .nav {
+        display: none; /* Hide navigation by default */
+    }
+
+    .nav.open {
+        display: block; /* Show navigation when menu is open */
+        width: 100%; /* Full width for dropdown */
+    }
+
+    .nav-list {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        width: 100%; /* Full width for dropdown */
+    }
+
+    .nav-list li {
+        margin-right: 0; /* Remove margin on smaller screens */
+        margin-bottom: 10px; /* Add spacing between stacked items */
+        width: 100%; /* Make list items full width */
+        text-align: center; /* Center text for better appearance */
+    }
+}
 
 
 
