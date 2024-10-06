@@ -37,7 +37,7 @@ const SubmitForm = () => {
 
     return (
         <div className="submit-form-container">
-            <h1>Contact Us</h1>
+            <h1>Ask Us</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Name:</label>

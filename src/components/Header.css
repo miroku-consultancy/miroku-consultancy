@@ -142,7 +142,7 @@ nav {
 @media (max-width: 768px) {
     .menu-toggle {
         display: block; /* Show menu toggle button */
-        margin-left: auto; 
+        /* margin-left: auto;  */
     }
     
     .nav {
