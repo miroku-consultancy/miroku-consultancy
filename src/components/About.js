@@ -1,36 +1,43 @@
-import React from 'react';
-import teamImage from '../assets/images/team.jfif'; // Replace with your actual image path
-import officeImage from '../assets/images/office.jfif'; // Replace with your actual image path
+import React, { useEffect, useState } from 'react';
 
 const About = () => {
+    const [aboutInfo, setAboutInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('/content.json');
+            const data = await response.json();
+            setAboutInfo(data.about);
+        };
+
+        fetchData();
+    }, []);
+
+    if (!aboutInfo) return <div>Loading...</div>; // Handle loading state
+
     return (
         <section id="about" style={styles.aboutSection}>
-            <h2>About Us</h2>
+            <h2>{aboutInfo.heading}</h2>
             {/* Team Section */}
             <div style={styles.content}>
                 <div style={styles.textContainer}>
-                    <p>
-                        Welcome to Miroku Consultancy Services, where we provide expert software solutions tailored to your business needs. Our team of experienced professionals is dedicated to helping you succeed in the ever-evolving tech landscape.
-                    </p>
-                    <p>
-                        We believe in building strong partnerships with our clients and delivering high-quality results that exceed expectations. Our services include custom software development, IT strategy consulting, and agile transformations.
-                    </p>
+                    {aboutInfo.description.map((para, index) => (
+                        <p key={index}>{para}</p>
+                    ))}
                 </div>
                 <div style={styles.imageContainer}>
-                    <img src={teamImage} alt="Our Team" style={styles.image} />
+                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.teamImage}`} alt="Our Team" style={styles.image} />
                 </div>
             </div>
             {/* Office Section */}
             <div style={styles.content}>
                 <div style={styles.textContainer}>
-                    <p style={styles.officeTitle}>Our Office</p>
-                    <p style={styles.officeSubtitle}>Where innovation meets collaboration.</p>
-                    <p>
-                        Our office is designed to foster creativity and teamwork, equipped with state-of-the-art technology and flexible workspaces. We believe that a collaborative environment enhances productivity and encourages innovative thinking. From open meeting areas to quiet zones, our office caters to various working styles, ensuring our team can thrive in their projects. Join us in a space where ideas come to life and partnerships grow.
-                    </p>
+                    <p style={styles.officeTitle}>{aboutInfo.office.title}</p>
+                    <p style={styles.officeSubtitle}>{aboutInfo.office.subtitle}</p>
+                    <p>{aboutInfo.office.description}</p>
                 </div>
                 <div style={styles.imageContainer}>
-                    <img src={officeImage} alt="Our Office" style={styles.officeImage} />
+                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.office.image}`} alt="Our Office" style={styles.officeImage} />
                 </div>
             </div>
         </section>

@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
-import logo from '../assets/images/logo.jpeg'; // Optional logo image
+import logo from '../assets/images/logo.jpeg';
 
 const Header = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
-    const [isFormVisible, setIsFormVisible] = useState(false); // State to manage form visibility
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [navItems, setNavItems] = useState([]);
+
+    useEffect(() => {
+        const fetchNavItems = async () => {
+            const response = await fetch('/content.json'); // Adjust path if needed
+            const data = await response.json();
+            setNavItems(data.navItems);
+        };
+
+        fetchNavItems();
+    }, []);
 
     const handleMouseEnter = (index) => {
         setExpandedIndex(index);
@@ -18,44 +28,6 @@ const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-    const navItems = [
-        {
-            name: 'Industries',
-            id: '#industries',
-            description: ['Ecommerce', 'ERP', 'Social'],
-        },
-        {
-            name: 'Solutions',
-            id: '#solutions',
-            description: ['Web App', 'Hybrid Mobile App', 'Rest API', 'Azure/AWS'],
-        },
-        {
-            name: 'Services',
-            id: '#services',
-            description: ['Custom Software Development', 'Cloud Solutions', 'IT Strategy and Consulting', 'Agile Transformation'],
-        },
-        {
-            name: 'Training',
-            id: '#training',
-            description: ['Dot net', 'React', 'React-native', 'Python'],
-        },
-        {
-            name: 'Company',
-            id: '#about',
-            description: ['About Us'],
-        },
-        {
-            name: 'Contact',
-            id: '#contact',
-            description: ['mirokuconsultancyservices@gmail.com'],
-        },
-        {
-            name: 'Connect',
-            id: '#SubmitForm',
-            description: ['Query with us'],
-        },
-    ];
 
     return (
         <header className="header">
@@ -70,11 +42,9 @@ const Header = () => {
                     </div>
                 </div>
                 <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
-                    {isMenuOpen ? '✖' : '☰'} {/* Cross for close, Menu for open */}
+                    {isMenuOpen ? '✖' : '☰'}
                 </button>
             </div>
-
-
 
             <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className="nav-list">

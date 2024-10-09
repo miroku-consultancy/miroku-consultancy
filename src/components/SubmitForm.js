@@ -1,7 +1,6 @@
-// src/components/SubmitForm.js
-import React, { useState } from 'react';
-import { init, send } from 'emailjs-com'; // Import EmailJS functions
-import './SubmitForm.css'; // Create a CSS file for styles
+import React, { useState, useEffect } from 'react';
+import { init, send } from 'emailjs-com';
+import './SubmitForm.css';
 
 const SubmitForm = () => {
     const [formData, setFormData] = useState({
@@ -10,9 +9,21 @@ const SubmitForm = () => {
         email: '',
         description: ''
     });
+    
+    const [formContent, setFormContent] = useState(null);
 
     // Initialize EmailJS
-    init('YvJ5NmnZ_iL6nOCM3'); // Replace with your EmailJS user ID
+    init('YvJ5NmnZ_iL6nOCM3');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('/content.json');
+            const data = await response.json();
+            setFormContent(data.submitForm);
+        };
+
+        fetchData();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,7 +33,6 @@ const SubmitForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your EmailJS credentials
         send('service_5pzx9x5', 'template_d09ikm7', formData)
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
@@ -35,9 +45,12 @@ const SubmitForm = () => {
             });
     };
 
+    if (!formContent) return <div>Loading...</div>; // Handle loading state
+
     return (
         <div className="submit-form-container">
-            <h1>Ask Us</h1>
+            <h1>{formContent.heading}</h1>
+            <p>{formContent.description}</p>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Name:</label>

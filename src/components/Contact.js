@@ -1,19 +1,31 @@
-import React from 'react';
-import contactBackground from '../assets/images/contact-background.jfif'; // Replace with your actual image path
-import emailIcon from '../assets/images/email-icon.jfif'; // Replace with your actual image path
+import React, { useEffect, useState } from 'react';
 
 const Contact = () => {
+    const [contactInfo, setContactInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('/content.json');
+            const data = await response.json();
+            setContactInfo(data.contact);
+        };
+
+        fetchData();
+    }, []);
+
+    if (!contactInfo) return <div>Loading...</div>; // Handle loading state
+
     return (
-        <section id="contact" style={styles.contactSection}>
-            <h2>Contact Us</h2>
-            <p>If you're interested in our services, please reach out:</p>
+        <section id="contact" style={{ ...styles.contactSection, backgroundImage: `url(${process.env.PUBLIC_URL}/${contactInfo.backgroundImage})` }}>
+            <h2>{contactInfo.heading}</h2>
+            <p>{contactInfo.description}</p>
             <div style={styles.addressInfo}>
-                <p>Registered Office:</p>
-                <p style={styles.address}>428 Bhatia Road, Daulatpura, Ghaziabad, Uttar pradesh, India - 201001</p>
+                <p>{contactInfo.office.title}</p>
+                <p style={styles.address}>{contactInfo.office.address}</p>
             </div>
             <div style={styles.contactInfo}>
-                <img src={emailIcon} alt="Email Icon" style={styles.icon} />
-                <p>Email: <a href="mailto:mirokuconsultancyservices@gmail.com" style={styles.emailLink}>mirokuconsultancyservices@gmail.com</a></p>
+                <img src={`${process.env.PUBLIC_URL}/${contactInfo.email.icon}`} alt="Email Icon" style={styles.icon} />
+                <p>Email: <a href={`mailto:${contactInfo.email.address}`} style={styles.emailLink}>{contactInfo.email.address}</a></p>
             </div>
         </section>
     );
@@ -23,10 +35,9 @@ const styles = {
     contactSection: {
         padding: '40px 20px',
         textAlign: 'center',
-        backgroundImage: `url(${contactBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        color: '#fff', // Change to fit your theme
+        color: '#fff',
     },
     contactInfo: {
         display: 'flex',
@@ -40,14 +51,14 @@ const styles = {
         marginRight: '10px',
     },
     emailLink: {
-        color: '#fff', // Change to fit your theme
+        color: '#fff',
         textDecoration: 'underline',
     },
     addressInfo: {
-        marginTop: '20px', // Space between email and address
+        marginTop: '20px',
     },
     address: {
-        fontSize: '1.2em', // Adjust the font size if needed
+        fontSize: '1.2em',
     },
 };
 

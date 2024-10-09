@@ -1,0 +1,177 @@
+{
+    "navItems": [
+        {
+            "name": "Industries",
+            "id": "#industries",
+            "description": ["Ecommerce", "ERP", "Social"]
+        },
+        {
+            "name": "Solutions",
+            "id": "#solutions",
+            "description": ["Web App", "Hybrid Mobile App", "Rest API", "Azure/AWS"]
+        },
+        {
+            "name": "Services",
+            "id": "#services",
+            "description": ["Custom Software Development", "Cloud Solutions", "IT Strategy and Consulting", "Agile Transformation"]
+        },
+        {
+            "name": "Training",
+            "id": "#training",
+            "description": ["Dot net", "React", "React-native", "Python"]
+        },
+        {
+            "name": "Company",
+            "id": "#about",
+            "description": ["About Us"]
+        },
+        {
+            "name": "Contact",
+            "id": "#contact",
+            "description": ["mirokuconsultancyservices@gmail.com"]
+        },
+        {
+            "name": "Connect",
+            "id": "#SubmitForm",
+            "description": ["Query with us"]
+        }
+    ],
+        "industries": [
+        { 
+            "name": "Ecommerce", 
+            "description": "Online retail and sales solutions that empower businesses to reach their customers effectively through user-friendly platforms.",
+            "details": "Our ecommerce solutions include fully customizable storefronts, secure payment gateways, and integrated inventory management systems, ensuring a seamless shopping experience for customers and increased sales for businesses.", 
+            "image": "images/ecommerce.jfif" 
+        },
+        { 
+            "name": "ERP", 
+            "description": "Enterprise Resource Planning for businesses to streamline operations and improve efficiency.",
+            "details": "We provide comprehensive ERP solutions that integrate various business processes, including finance, HR, and supply chain management, enabling real-time data access and informed decision-making.", 
+            "image": "images/erp.jfif" 
+        },
+        { 
+            "name": "Social", 
+            "description": "Social media platforms and solutions for enhancing engagement and communication.",
+            "details": "Our social media solutions help businesses build their online presence, engage with their audience, and analyze user behavior through targeted advertising and analytics tools.", 
+            "image": "images/social.png" 
+        },
+        { 
+            "name": "Website", 
+            "description": "Single page applications designed for speed and efficiency without traditional loading times.",
+            "details": "Our website solutions leverage modern frameworks to create responsive and interactive single-page applications, ensuring a smooth user experience across all devices.", 
+            "image": "images/WebsiteImg.jfif" 
+        }
+    ],
+    "contact": {
+        "heading": "Contact Us",
+        "description": "If you're interested in our services, please reach out:",
+        "office": {
+            "title": "Registered Office:",
+            "address": "428 Bhatia Road, Daulatpura, Ghaziabad, Uttar Pradesh, India - 201001"
+        },
+        "email": {
+            "icon": "images/email-icon.jfif",
+            "address": "mirokuconsultancyservices@gmail.com"
+        },
+        "backgroundImage": "images/contact-background.jfif"
+    },
+    "about": {
+        "heading": "About Us",
+        "description": [
+            "Welcome to Miroku Consultancy Services, where we provide expert software solutions tailored to your business needs. Our team of experienced professionals is dedicated to helping you succeed in the ever-evolving tech landscape.",
+            "We believe in building strong partnerships with our clients and delivering high-quality results that exceed expectations. Our services include custom software development, IT strategy consulting, and agile transformations."
+        ],
+        "teamImage": "images/team.jfif",
+        "office": {
+            "title": "Our Office",
+            "subtitle": "Where innovation meets collaboration.",
+            "description": "Our office is designed to foster creativity and teamwork, equipped with state-of-the-art technology and flexible workspaces. We believe that a collaborative environment enhances productivity and encourages innovative thinking. From open meeting areas to quiet zones, our office caters to various working styles, ensuring our team can thrive in their projects. Join us in a space where ideas come to life and partnerships grow.",
+            "image": "images/office.jfif"
+        }
+    },
+        "services": [
+            {
+                "title": "Custom Software Development",
+                "description": "Tailored software solutions to meet your business needs.",
+                "image": "images/custom-software.jfif"
+            },
+            {
+                "title": "Cloud Solutions",
+                "description": "Flexible and scalable cloud services for your organization.",
+                "image": "images/cloud-solutions.jfif"
+            },
+            {
+                "title": "IT Strategy and Consulting",
+                "description": "Expert advice to optimize your IT infrastructure.",
+                "image": "images/it-strategy.jfif"
+            },
+            {
+                "title": "Agile Transformation",
+                "description": "Transforming your processes for better efficiency and adaptability.",
+                "image": "images/agile-transformation.jfif"
+            }
+        ],
+            "solutions": [
+                {
+                    "title": "Web Applications",
+                    "description": "Custom web applications tailored to your business needs, enhancing productivity and efficiency.",
+                    "image": "images/web-app.jfif"
+                },
+                {
+                    "title": "Hybrid Mobile Applications",
+                    "description": "Cross-platform mobile applications that deliver a native experience on both Android and iOS.",
+                    "image": "images/mobile-app.jfif"
+                },
+                {
+                    "title": "REST APIs",
+                    "description": "Robust and secure APIs that allow seamless integration with various systems and services.",
+                    "image": "images/api.jfif"
+                },
+                {
+                    "title": "Cloud Solutions",
+                    "description": "Scalable cloud services leveraging platforms like AWS and Azure to support your business growth.",
+                    "image": "images/cloud.jfif"
+                }
+            ],
+                "submitForm": {
+                    "heading": "Ask Us",
+                    "description": "We would love to hear from you! Please fill out the form below and we will get back to you as soon as possible."
+                },
+                    "training": {
+                        "heading": "Our Training Programs",
+                        "programs": [
+                            {
+                                "title": "Dot Net",
+                                "description": "This course covers the fundamentals of .NET programming, including C#, ASP.NET, and more.",
+                                "duration": "6 weeks",
+                                "prerequisites": "Basic programming knowledge is recommended.",
+                                "image": "images/dotnet.jfif"
+                            },
+                            {
+                                "title": "React",
+                                "description": "Learn to build interactive user interfaces with React, a powerful JavaScript library.",
+                                "duration": "4 weeks",
+                                "prerequisites": "Familiarity with JavaScript is required.",
+                                "image": "images/react.jfif"
+                            },
+                            {
+                                "title": "React Native",
+                                "description": "Develop mobile applications using React Native for a native experience on both iOS and Android.",
+                                "duration": "5 weeks",
+                                "prerequisites": "Basic understanding of React is needed.",
+                                "image": "images/react-native.jfif"
+                            },
+                            {
+                                "title": "Python",
+                                "description": "Comprehensive introduction to Python programming, covering data structures, algorithms, and more.",
+                                "duration": "8 weeks",
+                                "prerequisites": "No prior programming experience required.",
+                                "image": "images/python.jfif"
+                            }
+                        ]
+                    }
+            
+        
+    
+    
+}
