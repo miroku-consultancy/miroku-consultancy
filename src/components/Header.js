@@ -34,12 +34,12 @@ const Header = () => {
             <div className="logo-container">
                 <img src={logo} alt="Miroku Consultancy Logo" className="logo" />
                 <div className="logo-container">
-                    <span className="short-name">mcs</span>
-                    <div className="long-name">
+                    {/* <span className="short-name">mcs</span> */}
+                    {/* <div className="long-name">
                         <span>MIROKU</span>
                         <span>CONSULTANCY</span>
                         <span>SERVICES</span>
-                    </div>
+                    </div> */}
                 </div>
                 <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
                     {isMenuOpen ? '✖' : '☰'}
