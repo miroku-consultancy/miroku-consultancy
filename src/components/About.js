@@ -2,17 +2,26 @@ import React, { useEffect, useState } from 'react';
 
 const About = () => {
     const [aboutInfo, setAboutInfo] = useState(null);
+    const [error, setError] = useState(null); // New error state
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('/content.json');
-            const data = await response.json();
-            setAboutInfo(data.about);
+            try {
+                const response = await fetch('/content.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setAboutInfo(data.about);
+            } catch (error) {
+                setError(error.message); // Set error message
+            }
         };
 
         fetchData();
     }, []);
 
+    if (error) return <div>Error: {error}</div>; // Display error message
     if (!aboutInfo) return <div>Loading...</div>; // Handle loading state
 
     return (
@@ -20,24 +29,24 @@ const About = () => {
             <h2>{aboutInfo.heading}</h2>
             {/* Team Section */}
             <div style={styles.content}>
+                <div style={styles.imageContainer}>
+                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.teamImage}`} alt="Our Team" style={styles.image} />
+                </div>
                 <div style={styles.textContainer}>
                     {aboutInfo.description.map((para, index) => (
                         <p key={index}>{para}</p>
                     ))}
                 </div>
-                <div style={styles.imageContainer}>
-                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.teamImage}`} alt="Our Team" style={styles.image} />
-                </div>
             </div>
             {/* Office Section */}
             <div style={styles.content}>
+                <div style={styles.imageContainer}>
+                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.office.image}`} alt="Our Office" style={styles.officeImage} />
+                </div>
                 <div style={styles.textContainer}>
                     <p style={styles.officeTitle}>{aboutInfo.office.title}</p>
                     <p style={styles.officeSubtitle}>{aboutInfo.office.subtitle}</p>
                     <p>{aboutInfo.office.description}</p>
-                </div>
-                <div style={styles.imageContainer}>
-                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.office.image}`} alt="Our Office" style={styles.officeImage} />
                 </div>
             </div>
         </section>
@@ -52,17 +61,16 @@ const styles = {
     },
     content: {
         display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start', // Align items to the top
+        flexDirection: 'column',
+        alignItems: 'center',
         marginBottom: '40px',
     },
     textContainer: {
-        flex: 1,
-        marginRight: '20px',
+        marginTop: '20px',
+        maxWidth: '600px',
     },
     imageContainer: {
-        flex: 1,
+        width: '100%',
     },
     image: {
         width: '100%',
@@ -73,11 +81,11 @@ const styles = {
         borderRadius: '8px',
     },
     officeTitle: {
-        fontSize: '1.5em', // Larger font size for the title
+        fontSize: '1.5em',
         fontWeight: 'bold',
     },
     officeSubtitle: {
-        fontSize: '1.2em', // Larger font size for the subtitle
+        fontSize: '1.2em',
         marginBottom: '10px',
     },
 };
