@@ -40,6 +40,9 @@ const Header = () => {
                         <span>CONSULTANCY</span>
                         <span>SERVICES</span>
                     </div> */}
+                     <div className="company-name">
+                        <span>MIROKU CONSULTANCY SERVICES</span>
+                    </div>
                 </div>
                 <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
                     {isMenuOpen ? '✖' : '☰'}
