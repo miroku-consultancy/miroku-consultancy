@@ -28,15 +28,29 @@ const Industry = () => {
                         <img src={process.env.PUBLIC_URL + '/' + industry.image} alt={industry.name} className="industry-image" />
                         <h2>{industry.name}</h2>
                         <p>{industry.description}</p>
-                        <button onClick={() => toggleDetails(index)}>
-                            {expandedIndex === index ? 'Hide Details' : 'Show Details'}
-                        </button>
-                        {expandedIndex === index && <p className="industry-details">{industry.details}</p>}
+                        <div>
+                            {expandedIndex === index && <p className="industry-details">{industry.details}</p>}
+                            <button onClick={() => toggleDetails(index)} style={styles.toggleButton}>
+                                {expandedIndex === index ? 'Hide Details' : 'Show Details'}
+                            </button>
+                        </div>
                     </li>
                 ))}
             </ul>
         </div>
     );
+};
+
+const styles = {
+    toggleButton: {
+        marginTop: '10px',
+        padding: '10px 20px',
+        backgroundColor: '#007BFF',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
 };
 
 export default Industry;

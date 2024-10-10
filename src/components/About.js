@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const About = () => {
     const [aboutInfo, setAboutInfo] = useState(null);
-    const [error, setError] = useState(null); // New error state
+    const [error, setError] = useState(null);
+    const [expandedSection, setExpandedSection] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,30 +15,41 @@ const About = () => {
                 const data = await response.json();
                 setAboutInfo(data.about);
             } catch (error) {
-                setError(error.message); // Set error message
+                setError(error.message);
             }
         };
 
         fetchData();
     }, []);
 
-    if (error) return <div>Error: {error}</div>; // Display error message
-    if (!aboutInfo) return <div>Loading...</div>; // Handle loading state
+    const toggleSection = (section) => {
+        setExpandedSection(expandedSection === section ? null : section);
+    };
+
+    if (error) return <div>Error: {error}</div>;
+    if (!aboutInfo) return <div>Loading...</div>;
 
     return (
         <section id="about" style={styles.aboutSection}>
             <h2>{aboutInfo.heading}</h2>
+
             {/* Team Section */}
             <div style={styles.content}>
                 <div style={styles.imageContainer}>
                     <img src={`${process.env.PUBLIC_URL}/${aboutInfo.teamImage}`} alt="Our Team" style={styles.image} />
                 </div>
                 <div style={styles.textContainer}>
-                    {aboutInfo.description.map((para, index) => (
-                        <p key={index}>{para}</p>
-                    ))}
+                    <div>
+                        {aboutInfo.description.slice(0, expandedSection === 'team' ? aboutInfo.description.length : 1).map((para, index) => (
+                            <p key={index}>{para}</p>
+                        ))}
+                    </div>
+                    <button onClick={() => toggleSection('team')} style={styles.toggleButton}>
+                        {expandedSection === 'team' ? 'Hide Details' : 'Show Details'}
+                    </button>
                 </div>
             </div>
+
             {/* Office Section */}
             <div style={styles.content}>
                 <div style={styles.imageContainer}>
@@ -46,7 +58,14 @@ const About = () => {
                 <div style={styles.textContainer}>
                     <p style={styles.officeTitle}>{aboutInfo.office.title}</p>
                     <p style={styles.officeSubtitle}>{aboutInfo.office.subtitle}</p>
-                    <p>{aboutInfo.office.description}</p>
+                    <div>
+                        {aboutInfo.office.description.split('. ').slice(0, expandedSection === 'office' ? undefined : 1).map((para, index) => (
+                            <p key={index}>{para}.</p>
+                        ))}
+                    </div>
+                    <button onClick={() => toggleSection('office')} style={styles.toggleButton}>
+                        {expandedSection === 'office' ? 'Hide Details' : 'Show Details'}
+                    </button>
                 </div>
             </div>
         </section>
@@ -87,6 +106,15 @@ const styles = {
     officeSubtitle: {
         fontSize: '1.2em',
         marginBottom: '10px',
+    },
+    toggleButton: {
+        marginTop: '20px',
+        padding: '10px 20px',
+        backgroundColor: '#007BFF',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
     },
 };
 
