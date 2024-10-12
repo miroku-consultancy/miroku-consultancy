@@ -12,8 +12,8 @@ const SubmitForm = () => {
     
     const [formContent, setFormContent] = useState(null);
 
-    // Initialize EmailJS
-    init('YvJ5NmnZ_iL6nOCM3');
+    // Initialize EmailJS with the user ID from the environment variable
+    init(process.env.REACT_APP_EMAILJS_USER_ID);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +33,11 @@ const SubmitForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        send('service_5pzx9x5', 'template_d09ikm7', formData)
+        send(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID, 
+            process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
+            formData
+        )
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
                 alert('Message sent successfully!');
