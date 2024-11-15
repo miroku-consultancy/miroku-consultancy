@@ -30,6 +30,16 @@
             ]
         },
         {
+            "name": "Academic",
+            "id": "#Academic",
+            "description": [
+                "Japanese",
+                "Korean",
+                "Spanish",
+                "German"
+            ]
+        },
+        {
             "name": "Training",
             "id": "#training",
             "description": [
@@ -135,6 +145,28 @@
             "title": "Agile Transformation",
             "description": "Transforming your processes for better efficiency and adaptability.",
             "image": "images/agile-transformation.jfif"
+        }
+    ],
+    "academics": [
+        {
+            "title": "Language",
+            "description": "We provide expert foreign language services in Japanese, Russian, Korean, German, Spanish, French, and more.",
+            "image": "images/Classes.jpeg"
+        },
+        {
+            "title": "Interpretation",
+            "description": "From translation, interpretation, video editing, subtitling, to localization and transcription, our skilled linguists ensure accuracy and cultural relevance in every project.",
+            "image": "images/interpretation.jpeg"
+        },
+        {
+            "title": "Seminar",
+            "description": "Whether for business, media, or technical needs, we deliver high-quality, timely, and confidential solutions tailored to your audience.",
+            "image": "images/seminar.jpg"
+        },
+        {
+            "title": "Visa to abroad",
+            "description": "Connect with us to expand your reach and make your message resonate worldwide.",
+            "image": "images/VisaToJapan.jpg"
         }
     ],
     "solutions": [
