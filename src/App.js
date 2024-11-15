@@ -9,6 +9,7 @@ import Industry from './components/Industries'; // Import the Industry component
 import Solutions from './components/Solutions'; // Import the Solutions component
 import Training from './components/Training';
 import SubmitForm from './components/SubmitForm';
+import Academic from './components/Academic';
 import './App.css';
 
 const App = () => {
@@ -21,6 +22,9 @@ const App = () => {
                 </section>
                 <section id="industries">
                     <Industry />
+                </section>
+                <section id="Academic">
+                    <Academic />
                 </section>
                 <section id="solutions">
                     <Solutions />
