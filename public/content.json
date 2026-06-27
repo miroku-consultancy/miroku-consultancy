@@ -30,16 +30,6 @@
             ]
         },
         {
-            "name": "Training",
-            "id": "#training",
-            "description": [
-                "Dot net",
-                "React",
-                "React-native",
-                "Python"
-            ]
-        },
-        {
             "name": "Company",
             "id": "#about",
             "description": [
