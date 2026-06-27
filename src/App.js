@@ -43,7 +43,7 @@ const App = () => {
                 </section>
             </main>
             <footer>
-                <p>&copy; 2024 Miroku Consultancy Services. All rights reserved.</p>
+                <p>&copy; 2026 SyntaxLoom. All rights reserved.</p>
             </footer>
         </Router>
     );

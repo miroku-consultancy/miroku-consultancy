@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import logo from '../assets/images/logo.jpeg';
+import logo from '../assets/images/logo.png';
 
 const Header = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
@@ -41,7 +41,7 @@ const Header = () => {
                         <span>SERVICES</span>
                     </div> */}
                      <div className="company-name">
-                        <span>MIROKU CONSULTANCY SERVICES</span>
+                        <span>SyntaxLoom</span>
                     </div>
                 </div>
                 <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
