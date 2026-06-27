@@ -61,7 +61,7 @@
             "name": "Contact",
             "id": "#contact",
             "description": [
-                "mirokuconsultancyservices@gmail.com"
+                "support@SyntaxLoom.com"
             ]
         },
         {
@@ -107,14 +107,14 @@
         },
         "email": {
             "icon": "images/email-icon.jfif",
-            "address": "mirokuconsultancyservices@gmail.com"
+            "address": "support@SyntaxLoom.com"
         },
         "backgroundImage": "images/contact-background.jfif"
     },
     "about": {
         "heading": "About Us",
         "description": [
-            "Welcome to Miroku Consultancy Services, where we provide expert software solutions tailored to your business needs. Our team of experienced professionals is dedicated to helping you succeed in the ever-evolving tech landscape.",
+            "Welcome to SyntaxLoom, where we provide expert software solutions tailored to your business needs. Our team of experienced professionals is dedicated to helping you succeed in the ever-evolving tech landscape.",
             "We believe in building strong partnerships with our clients and delivering high-quality results that exceed expectations. Our services include custom software development, IT strategy consulting, and agile transformations."
         ],
         "teamImage": "images/team.jfif",
