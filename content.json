@@ -30,16 +30,6 @@
             ]
         },
         {
-            "name": "Academic",
-            "id": "#Academic",
-            "description": [
-                "Japanese",
-                "Korean",
-                "Spanish",
-                "German"
-            ]
-        },
-        {
             "name": "Training",
             "id": "#training",
             "description": [
