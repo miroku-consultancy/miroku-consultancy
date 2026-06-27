@@ -23,9 +23,9 @@ const App = () => {
                 <section id="industries">
                     <Industry />
                 </section>
-                <section id="Academic">
+                {/* <section id="Academic">
                     <Academic />
-                </section>
+                </section> */}
                 <section id="solutions">
                     <Solutions />
                 </section>
