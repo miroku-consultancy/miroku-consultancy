@@ -33,7 +33,7 @@ const Contact = () => {
             {/* Google Map Embed */}
             <div style={styles.mapContainer}>
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28013.976806652114!2d77.44156199999998!3d28.6373408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf1de56c6362d%3A0xcfd96615a8f6bf0a!2s428%2C%20Bhatia%20Rd%2C%20Kamla%20Quarter%2C%20Nehru%20Nagar%20III%2C%20Nehru%20Nagar%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201001!5e0!3m2!1sen!2sin!4v1728531440818!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.0706671914354!2d-0.9602176234498356!3d52.260261771994166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48770e11b5cf75af%3A0x86e9065248a6e08!2s82%20Port%20Rd%2C%20New%20Duston%2C%20Northampton%20NN5%206NL%2C%20UK!5e0!3m2!1sen!2sin!4v1782556699587!5m2!1sen!2sin"
                     style={styles.map}
                     allowFullScreen 
                     loading="lazy"
