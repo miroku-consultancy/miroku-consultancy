@@ -53,31 +53,147 @@
         }
     ],
     "industries": [
+        
+  {
+  "name": "Ecommerce",
+  "description": "Our Ecommerce solutions empower businesses to establish a strong online presence, increase sales, and deliver exceptional shopping experiences through secure, scalable, and user-friendly digital platforms.",
+
+  "details": [
+    "Custom Ecommerce Website Development tailored to your business requirements.",
+    "Responsive and mobile-friendly designs for seamless user experience across all devices.",
+    "Secure payment gateway integration with Stripe, PayPal, Razorpay, and other providers.",
+    "Advanced product catalog and category management for easy organization.",
+    "Shopping cart, wishlist, and secure checkout functionality.",
+    "Inventory and stock management with real-time product availability.",
+    "Order management system with order tracking and invoice generation.",
+    "Customer account management with profile, order history, and saved addresses.",
+    "Multi-vendor marketplace development with vendor management features.",
+    "Product search, filters, sorting, and smart recommendation system.",
+    "Discount coupons, promotional campaigns, and loyalty reward programs.",
+    "Customer reviews, ratings, and feedback management.",
+    "Shipping and logistics integration with leading courier partners.",
+    "Email and SMS notifications for orders, payments, and deliveries.",
+    "SEO-friendly architecture to improve search engine rankings.",
+    "Integration with CRM, ERP, and third-party business applications.",
+    "Analytics dashboard for monitoring sales, customer behavior, and business performance.",
+    "High-level security with SSL encryption, authentication, and fraud protection.",
+    "Cloud deployment on AWS, Microsoft Azure, or Google Cloud Platform.",
+    "Scalable architecture designed to support growing businesses.",
+    "Regular software updates, maintenance, and technical support.",
+    "Performance optimization for faster loading speed and better user experience.",
+    "API development and integration with external business services.",
+    "Comprehensive testing to ensure reliability, security, and quality.",
+    "End-to-end consultation from planning and development to deployment and ongoing support."
+  ],
+
+  "image": "images/ecommerce.jfif"
+},
+        
+            {
+  "name": "ERP",
+  "description": "Our Enterprise Resource Planning (ERP) solutions are designed to help organizations streamline their business operations by integrating all core processes into a single, centralized system. We develop secure, scalable, and intelligent ERP applications that improve operational efficiency, reduce manual work, and enable better collaboration across departments. Whether you are a small business, a growing enterprise, or a large organization, our customized ERP solutions simplify complex workflows and provide real-time visibility into every aspect of your business. By leveraging modern technologies and industry best practices, we help businesses improve productivity, optimize resources, reduce operational costs, and make data-driven decisions for sustainable growth.",
+
+  "details": [
+    "Custom ERP software development tailored to your business requirements.",
+    "Centralized management of all business operations through a unified platform.",
+    "Finance and Accounting Management with automated invoicing, taxation, budgeting, and financial reporting.",
+    "Human Resource Management (HRMS) including employee records, payroll, attendance, leave management, and recruitment.",
+    "Inventory and Warehouse Management with real-time stock tracking and automated inventory updates.",
+    "Procurement and Purchase Management for efficient vendor and supplier coordination.",
+    "Sales and Customer Relationship Management (CRM) to improve customer interactions and business growth.",
+    "Supply Chain Management for seamless coordination between suppliers, warehouses, and customers.",
+    "Production and Manufacturing Management with production planning and quality control.",
+    "Project Management modules for planning, resource allocation, task tracking, and project reporting.",
+    "Business Intelligence and Analytics dashboards with real-time reports and data visualization.",
+    "Role-based user access and advanced security features to protect sensitive business information.",
+    "Workflow automation to reduce manual tasks and improve operational efficiency.",
+    "Integration with third-party applications, payment gateways, accounting software, and external APIs.",
+    "Cloud-based and on-premise ERP deployment options based on business requirements.",
+    "Multi-branch and multi-location management with centralized reporting.",
+    "Document management system for secure storage and easy access to business documents.",
+    "Automated notifications, reminders, and approval workflows for faster business processes.",
+    "Mobile-friendly ERP solutions for accessing business information anytime and anywhere.",
+    "Scalable architecture that grows with your business and supports future expansion.",
+    "Performance optimization to ensure fast, reliable, and uninterrupted operations.",
+    "Regular software updates, maintenance, technical support, and feature enhancements.",
+    "Data backup, disaster recovery, and enterprise-grade security for business continuity.",
+    "Comprehensive testing and quality assurance to deliver a reliable and high-performance ERP system.",
+    "End-to-end consultation, implementation, user training, deployment, and ongoing support to ensure successful ERP adoption."
+  ],
+
+  "image": "images/erp.jfif"
+},
+        
         {
-            "name": "Ecommerce",
-            "description": "Online retail and sales solutions that empower businesses to reach their customers effectively through user-friendly platforms.",
-            "details": "Our ecommerce solutions include fully customizable storefronts, secure payment gateways, and integrated inventory management systems, ensuring a seamless shopping experience for customers and increased sales for businesses.",
-            "image": "images/ecommerce.jfif"
-        },
-        {
-            "name": "ERP",
-            "description": "Enterprise Resource Planning for businesses to streamline operations and improve efficiency.",
-            "details": "We provide comprehensive ERP solutions that integrate various business processes, including finance, HR, and supply chain management, enabling real-time data access and informed decision-making.",
-            "image": "images/erp.jfif"
-        },
-        {
-            "name": "Social",
-            "description": "Social media platforms and solutions for enhancing engagement and communication.",
-            "details": "Our social media solutions help businesses build their online presence, engage with their audience, and analyze user behavior through targeted advertising and analytics tools.",
-            "image": "images/social.png"
-        },
-        {
-            "name": "Website",
-            "description": "Single page applications designed for speed and efficiency without traditional loading times.",
-            "details": "Our website solutions leverage modern frameworks to create responsive and interactive single-page applications, ensuring a smooth user experience across all devices.",
-            "image": "images/WebsiteImg.jfif"
-        }
-    ],
+  "name": "Social",
+  "description": "Our Social Media and Community Platform solutions are designed to help businesses build a strong digital presence, connect with their audience, and foster meaningful interactions across multiple online channels. We develop secure, scalable, and feature-rich social platforms that encourage user engagement, improve brand awareness, and create lasting customer relationships. Whether you need a social networking platform, a community portal, an internal collaboration system, or a customer engagement application, our solutions are customized to meet your business objectives. By combining modern technologies with intuitive user experiences, we help organizations increase customer loyalty, improve communication, and drive business growth through innovative digital engagement.",
+
+  "details": [
+    "Custom Social Media Platform Development tailored to your business requirements.",
+    "Community Portal Development for businesses, educational institutions, and organizations.",
+    "User Registration, Authentication, and Secure Profile Management.",
+    "Social Networking Features including posts, likes, comments, and content sharing.",
+    "Real-time Chat and Messaging System for instant communication.",
+    "Private and Group Messaging with file and media sharing support.",
+    "Audio and Video Calling integration for seamless collaboration.",
+    "Discussion Forums and Community Groups for enhanced user engagement.",
+    "News Feed Management with personalized content recommendations.",
+    "Photo, Video, and Document Upload functionality with cloud storage integration.",
+    "Event Management and Online Community Engagement tools.",
+    "Push Notifications, Email Notifications, and In-App Alerts.",
+    "Social Media API Integration with Facebook, Instagram, LinkedIn, Twitter (X), and other platforms.",
+    "Advanced Search and Filter functionality for users and content.",
+    "Analytics Dashboard to monitor user engagement, growth, and platform performance.",
+    "Content Moderation and Reporting tools to maintain a safe community environment.",
+    "Role-Based Access Control for administrators, moderators, and users.",
+    "SEO-friendly architecture to improve online visibility and search engine rankings.",
+    "Cloud Deployment using AWS, Microsoft Azure, or Google Cloud Platform.",
+    "Enterprise-grade Security with data encryption, secure authentication, and privacy protection.",
+    "Scalable architecture capable of supporting millions of active users.",
+    "Third-party API Integration including CRM, Marketing Tools, and Payment Gateways.",
+    "Cross-platform compatibility for Desktop, Android, iOS, and Tablets.",
+    "Regular software maintenance, feature upgrades, and technical support.",
+    "End-to-end consultation, UI/UX design, development, testing, deployment, and post-launch support."
+  ],
+
+  "image": "images/social.png"
+},
+       {
+  "name": "Website",
+  "description": "Our Website Development solutions are designed to create modern, responsive, and high-performance websites that strengthen your online presence and deliver exceptional user experiences. We specialize in building visually appealing, SEO-friendly, and scalable websites tailored to meet the unique needs of businesses across various industries. Whether you require a corporate website, business portfolio, e-commerce platform, educational portal, or custom web application, our experienced team delivers innovative solutions using the latest technologies and industry best practices. Our goal is to help businesses establish credibility, engage customers, improve online visibility, and drive sustainable digital growth.",
+
+  "details": [
+    "Custom Website Development tailored to your business goals and requirements.",
+    "Responsive Web Design for seamless performance across desktops, tablets, and mobile devices.",
+    "Modern UI/UX Design focused on delivering an engaging and user-friendly experience.",
+    "Corporate Websites, Business Portals, and Professional Company Websites.",
+    "Landing Page Development optimized for marketing campaigns and lead generation.",
+    "Portfolio Websites for individuals, startups, and creative professionals.",
+    "Ecommerce Website Development with secure payment gateway integration.",
+    "Content Management System (CMS) development for easy content updates and management.",
+    "Search Engine Optimization (SEO) to improve website visibility and search rankings.",
+    "Fast-loading and performance-optimized websites for better user experience.",
+    "Cross-browser compatibility to ensure smooth functionality across all major browsers.",
+    "Secure authentication, SSL implementation, and advanced website security features.",
+    "Integration with third-party APIs, CRM systems, ERP software, and payment gateways.",
+    "Interactive forms, contact pages, live chat, and customer inquiry management.",
+    "Blog, News, and Article Management for content publishing and digital marketing.",
+    "Image galleries, videos, animations, and multimedia integration.",
+    "Cloud hosting support with AWS, Microsoft Azure, and Google Cloud Platform.",
+    "Website analytics and performance monitoring using modern tracking tools.",
+    "Accessibility compliance to provide an inclusive experience for all users.",
+    "Scalable architecture that supports future business expansion and additional features.",
+    "Regular maintenance, software updates, security patches, and technical support.",
+    "Website migration, redesign, and modernization of existing websites.",
+    "Comprehensive testing for performance, responsiveness, usability, and security.",
+    "Deployment, domain configuration, hosting setup, and post-launch monitoring.",
+    "End-to-end consultation, planning, development, testing, deployment, and ongoing support to ensure long-term business success."
+  ],
+
+  "image": "images/WebsiteImg.jfif"
+
+}
+],
     "contact": {
         "heading": "Contact Us",
         "description": "If you're interested in our services, please reach out:",
@@ -106,27 +222,63 @@
         }
     },
     "services": [
-        {
-            "title": "Custom Software Development",
-            "description": "Tailored software solutions to meet your business needs.",
-            "image": "images/custom-software.jfif"
-        },
-        {
-            "title": "Cloud Solutions",
-            "description": "Flexible and scalable cloud services for your organization.",
-            "image": "images/cloud-solutions.jfif"
-        },
-        {
-            "title": "IT Strategy and Consulting",
-            "description": "Expert advice to optimize your IT infrastructure.",
-            "image": "images/it-strategy.jfif"
-        },
-        {
-            "title": "Agile Transformation",
-            "description": "Transforming your processes for better efficiency and adaptability.",
-            "image": "images/agile-transformation.jfif"
-        }
+  {
+    "title": "Custom Software Development",
+    "description": "Tailored software solutions to meet your business needs.",
+    "details": [
+      "Custom software solutions for businesses",
+      "Web and desktop application development",
+      "Scalable and secure architecture",
+      "REST API development and integration",
+      "Database design and optimization",
+      "Third-party API integration",
+      "Maintenance and ongoing support"
     ],
+    "image": "images/custom-software.jfif"
+  },
+  {
+    "title": "Cloud Solutions",
+    "description": "Flexible and scalable cloud services for your organization.",
+    "details": [
+      "AWS, Azure and Google Cloud deployment",
+      "Cloud migration services",
+      "Server configuration and management",
+      "Auto scaling and load balancing",
+      "Cloud security implementation",
+      "Backup and disaster recovery",
+      "24/7 monitoring and maintenance"
+    ],
+    "image": "images/cloud-solutions.jfif"
+  },
+  {
+    "title": "IT Strategy and Consulting",
+    "description": "Expert advice to optimize your IT infrastructure.",
+    "details": [
+      "Digital transformation consulting",
+      "Technology roadmap planning",
+      "IT infrastructure assessment",
+      "Business process optimization",
+      "Security and compliance guidance",
+      "Cost optimization strategies",
+      "Long-term IT support planning"
+    ],
+    "image": "images/it-strategy.jfif"
+  },
+  {
+    "title": "Agile Transformation",
+    "description": "Transforming your processes for better efficiency and adaptability.",
+    "details": [
+      "Agile coaching and mentoring",
+      "Scrum and Kanban implementation",
+      "Sprint planning and management",
+      "Team collaboration improvement",
+      "Continuous delivery practices",
+      "Performance tracking and reporting",
+      "Process optimization and scaling"
+    ],
+    "image": "images/agile-transformation.jfif"
+  }
+],
     "academics": [
         {
             "title": "Language",

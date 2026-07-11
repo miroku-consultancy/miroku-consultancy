@@ -20,8 +20,8 @@
 }
 
 .logo {
-    width: 130px; /* Slightly larger for prominence */
-    height: auto;
+    width: 90px; /* Slightly larger for prominence */
+    height: 55px;
     filter: drop-shadow(0 0 8px rgba(255, 111, 0, 0.6)); /* Glow consistent with text */
     transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo.jpeg';
 
 const Header = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);

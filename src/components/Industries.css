@@ -1,41 +1,275 @@
-/* src/components/Industries.css */
-.industry-container {
-    padding: 20px;
-    text-align: center;
-}
+/* ==========================================
+   Global
+========================================== */
 
-.industry-list {
-    list-style-type: none;
+* {
+    margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column; /* Change to row for horizontal layout */
-    gap: 20px; /* Space between items */
+    box-sizing: border-box;
 }
 
-.industry-item {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.industry-container {
+    width: 95%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.industry-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.industry-title::after {
+    content: "";
+    width: 90px;
+    height: 4px;
+    background: #0d6efd;
+    margin: 12px auto 0;
+    display: block;
+    border-radius: 50px;
+}
+
+/* ==========================================
+   Initial Cards
+========================================== */
+
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* ==========================================
+   Card
+========================================== */
+
+.industry-card,
+.selected-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: .35s ease;
+}
+
+.industry-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.15);
+}
+
+.selected-card {
+    border: 2px solid #0d6efd;
 }
 
 .industry-image {
-    width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* ==========================================
+   Content
+========================================== */
+
+.industry-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+}
+
+.industry-content h2 {
+    color: #0d6efd;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.industry-content p {
+    color: #555;
+    line-height: 1.7;
+    flex: 1;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+/* ==========================================
+   Button
+========================================== */
+
+.toggle-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    background: #0d6efd;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
     border-radius: 8px;
-    margin-bottom: 10px; /* Space between image and text */
+    cursor: pointer;
+    transition: .3s;
 }
 
-.industry-details {
-    font-size: 0.9em; /* Slightly smaller font size for details */
-    color: #555; /* Gray color for better readability */
-    margin-top: 10px; /* Space above details */
+.toggle-btn:hover {
+    background: #084ec4;
 }
 
-@media (min-width: 768px) {
-    .industry-list {
-        flex-direction: row; /* Switch to row layout on larger screens */
-        justify-content: space-around;
+/* ==========================================
+   Selected Layout
+========================================== */
+
+.selected-layout {
+    display: grid;
+    grid-template-columns: minmax(330px, 380px) 1fr;
+    gap: 30px;
+    margin-bottom: 45px;
+    align-items: start;
+    animation: fadeIn .4s ease;
+}
+
+/* ==========================================
+   Details Panel
+========================================== */
+
+.details-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.10);
+    position: sticky;
+    top: 90px;
+    min-height: 650px;
+}
+
+.details-panel h2 {
+    color: #0d6efd;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.details-panel ul {
+    padding-left: 20px;
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.details-panel li {
+    margin-bottom: 14px;
+    color: #444;
+    line-height: 1.8;
+}
+
+.details-panel ul::-webkit-scrollbar {
+    width: 7px;
+}
+
+.details-panel ul::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 20px;
+}
+
+/* ==========================================
+   Remaining Cards
+========================================== */
+
+.remaining-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* ==========================================
+   Animation
+========================================== */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width:1200px) {
+
+    .industry-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .remaining-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .selected-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .details-panel {
+        position: static;
+        min-height: auto;
+    }
+
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width:768px) {
+
+    .industry-container {
+        width: 92%;
+    }
+
+    .industry-title {
+        font-size: 34px;
+    }
+
+    .industry-grid,
+    .remaining-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industry-image {
+        height: 200px;
+    }
+
+    .industry-content h2 {
+        font-size: 24px;
+    }
+
+    .details-panel {
+        padding: 20px;
+    }
+
+    .details-panel h2 {
+        font-size: 24px;
+    }
+
+    .details-panel ul {
+        max-height: 350px;
+    }
+
 }
