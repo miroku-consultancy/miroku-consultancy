@@ -302,27 +302,64 @@
         }
     ],
     "solutions": [
-        {
-            "title": "Web Applications",
-            "description": "Custom web applications tailored to your business needs, enhancing productivity and efficiency.",
-            "image": "images/web-app.jfif"
-        },
-        {
-            "title": "Hybrid Mobile Applications",
-            "description": "Cross-platform mobile applications that deliver a native experience on both Android and iOS.",
-            "image": "images/mobile-app.jfif"
-        },
-        {
-            "title": "REST APIs",
-            "description": "Robust and secure APIs that allow seamless integration with various systems and services.",
-            "image": "images/api.jfif"
-        },
-        {
-            "title": "Cloud Solutions",
-            "description": "Scalable cloud services leveraging platforms like AWS and Azure to support your business growth.",
-            "image": "images/cloud.jfif"
-        }
+  {
+    "title": "Web Applications",
+    "description": "Custom web applications tailored to your business needs, enhancing productivity and efficiency.",
+    "details": [
+      "Custom web application development",
+      "Responsive UI/UX design",
+      "React, Angular & Vue development",
+      "REST API integration",
+      "Authentication & authorization",
+      "Performance optimization",
+      "Deployment & maintenance"
     ],
+    "image": "images/web-app.jfif"
+  },
+  {
+    "title": "Hybrid Mobile Applications",
+    "description": "Cross-platform mobile applications that deliver a native experience on both Android and iOS.",
+    "details": [
+      "Android & iOS app development",
+      "React Native development",
+      "Flutter application support",
+      "Offline data synchronization",
+      "Push notification integration",
+      "App Store & Play Store deployment",
+      "Maintenance & version upgrades"
+    ],
+    "image": "images/mobile-app.jfif"
+  },
+  {
+    "title": "REST APIs",
+    "description": "Robust and secure APIs that allow seamless integration with various systems and services.",
+    "details": [
+      "RESTful API development",
+      "JWT & OAuth authentication",
+      "Third-party API integration",
+      "API documentation using Swagger",
+      "Database connectivity",
+      "High-performance architecture",
+      "API monitoring & maintenance"
+    ],
+    "image": "images/api.jfif"
+  },
+  {
+    "title": "Cloud Solutions",
+    "description": "Scalable cloud services leveraging platforms like AWS and Azure to support your business growth.",
+    "details": [
+      "AWS & Azure deployment",
+      "Cloud infrastructure setup",
+      "Server monitoring",
+      "Auto scaling configuration",
+      "Backup & disaster recovery",
+      "Cloud security implementation",
+      "24×7 maintenance & support"
+    ],
+    "image": "images/cloud.jfif"
+  }
+],
+    
     "submitForm": {
         "heading": "Ask Us",
         "description": "We would love to hear from you! Please fill out the form below and we will get back to you as soon as possible."
