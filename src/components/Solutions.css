@@ -1,61 +1,254 @@
-/* src/components/Solutions.css */
+/* ===============================
+   Solutions Section
+================================= */
 
-.solutions-section {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #f9f9f9;
+* {
+  box-sizing: border-box;
 }
+
+#solutions {
+  width: 95%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 70px 0;
+}
+
+.solution-title {
+  text-align: center;
+  font-size: 42px;
+  color: #222;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.solution-title::after {
+  content: "";
+  width: 90px;
+  height: 4px;
+  background: #0d6efd;
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 20px;
+}
+
+.solution-subtitle {
+  text-align: center;
+  color: #666;
+  max-width: 850px;
+  margin: 0 auto 45px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+/* ===============================
+   Initial Cards
+================================= */
 
 .solutions-list {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center items */
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: 20px; /* Space between items */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
 }
 
-.solution-item {
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    flex: 1 1 250px; /* Allow items to grow and shrink with a base width */
-    max-width: 250px; /* Set a max width for items */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Align text to left */
-    transition: transform 0.2s; /* Add a transition for hover effect */
+/* ===============================
+   Card
+================================= */
+
+.solution-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  transition: .35s;
+  display: flex;
+  flex-direction: column;
 }
 
-.solution-item:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+.solution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
 }
 
 .solution-image {
-    width: 100%; /* Make the image take the full width of the item */
-    border-radius: 8px; /* Round the image corners */
-    margin-bottom: 15px; /* Space between image and text */
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
-.solution-item h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+.solution-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.solution-item p {
-    font-size: 1em;
-    line-height: 1.5;
+.solution-content h3 {
+  color: #0d6efd;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* Media Queries for Responsive Design */
+.solution-content p {
+  color: #555;
+  line-height: 1.7;
+  flex: 1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===============================
+   Button
+================================= */
+
+.solution-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0d6efd;
+  color: #fff;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 15px;
+}
+
+.solution-btn:hover {
+  background: #084ec4;
+}
+
+/* ===============================
+   Selected Layout
+================================= */
+
+.selected-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+/* ===============================
+   Selected Card
+================================= */
+
+.selected-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+}
+
+/* ===============================
+   Details Panel
+================================= */
+
+.details-panel {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+  padding: 30px;
+  min-height: 650px;
+}
+
+.details-panel h2 {
+  color: #0d6efd;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.details-panel ul {
+  padding-left: 20px;
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.details-panel li {
+  margin-bottom: 14px;
+  color: #444;
+  line-height: 1.8;
+}
+
+.details-panel ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.details-panel ul::-webkit-scrollbar-thumb {
+  background: #0d6efd;
+  border-radius: 20px;
+}
+
+/* ===============================
+   Remaining Cards
+================================= */
+
+.remaining-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* ===============================
+   Tablet
+================================= */
+
+@media (max-width: 1200px) {
+
+  .solutions-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .remaining-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .selected-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .details-panel {
+    min-height: auto;
+  }
+
+}
+
+/* ===============================
+   Mobile
+================================= */
+
 @media (max-width: 768px) {
-    .solution-item {
-        flex: 1 1 200px; /* Adjust width for medium screens */
-    }
-}
 
-@media (min-width: 768px) {
-    .industry-list {
-        flex-direction: row; /* Switch to row layout on larger screens */
-        justify-content: space-around;
-    }
+  #solutions {
+    width: 92%;
+  }
+
+  .solution-title {
+    font-size: 34px;
+  }
+
+  .solutions-list,
+  .remaining-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-image {
+    height: 200px;
+  }
+
+  .details-panel {
+    padding: 20px;
+  }
+
+  .details-panel h2 {
+    font-size: 24px;
+  }
+
+  .details-panel ul {
+    max-height: 350px;
+  }
+
 }
