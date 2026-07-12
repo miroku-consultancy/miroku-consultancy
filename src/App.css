@@ -105,3 +105,17 @@ footer {
     margin: 5px; /* Reduce margin for sections */
   }
 }
+*,
+*::before,
+*::after{
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    overflow-x:hidden;
+
+}

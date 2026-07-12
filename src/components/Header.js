@@ -1,84 +1,282 @@
-import React, { useState, useEffect } from 'react';
-import './Header.css';
-import logo from '../assets/images/logo.jpeg';
+import React, {
+    useEffect,
+    useState
+} from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import "./Header.css";
+
+import logo from "../assets/images/logo.jpeg";
 
 const Header = () => {
-    const [expandedIndex, setExpandedIndex] = useState(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const [navItems, setNavItems] = useState([]);
 
+    const [expandedIndex, setExpandedIndex] =
+        useState(null);
+
+    const [isMenuOpen, setIsMenuOpen] =
+        useState(false);
+
+    const [scrolled, setScrolled] =
+        useState(false);
+
+    /* ==========================================
+       LOAD NAVIGATION
+    ========================================== */
+
     useEffect(() => {
+
         const fetchNavItems = async () => {
-            const response = await fetch('/content.json'); // Adjust path if needed
-            const data = await response.json();
-            setNavItems(data.navItems);
+
+            try {
+
+                const response = await fetch(
+                    "/content.json"
+                );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to load navigation."
+                    );
+
+                }
+
+                const data =
+                    await response.json();
+
+                setNavItems(
+                    data.navItems || []
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Navigation loading failed:",
+                    error
+                );
+
+            }
+
         };
 
         fetchNavItems();
+
     }, []);
 
-    const handleMouseEnter = (index) => {
-        setExpandedIndex(index);
-    };
+    /* ==========================================
+       STICKY HEADER
+    ========================================== */
 
-    const handleMouseLeave = () => {
-        setExpandedIndex(null);
-    };
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            setScrolled(
+                window.scrollY > 20
+            );
+
+        };
+
+        window.addEventListener(
+            "scroll",
+            handleScroll
+        );
+
+        return () =>
+
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+
+    }, []);
+
+    /* ==========================================
+       MENU
+    ========================================== */
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+
+        setIsMenuOpen(prev => !prev);
+
+    };
+
+    const closeMenu = () => {
+
+        setIsMenuOpen(false);
+
+        setExpandedIndex(null);
+
     };
 
     return (
-        <header className="header">
+
+        <header
+            className={`header ${
+                scrolled ? "scrolled" : ""
+            }`}
+        >
+
+            {/* ==========================
+                LOGO
+            ========================== */}
+
             <div className="logo-container">
-                <img src={logo} alt="Miroku Consultancy Logo" className="logo" />
-                <div className="logo-container">
-                    {/* <span className="short-name">mcs</span> */}
-                    {/* <div className="long-name">
-                        <span>MIROKU</span>
-                        <span>CONSULTANCY</span>
-                        <span>SERVICES</span>
-                    </div> */}
-                     <div className="company-name">
-                        <span>SyntaxLoom</span>
+
+                <a
+                    href="#home"
+                    className="logo-link"
+                    onClick={closeMenu}
+                >
+
+                    <img
+                        src={logo}
+                        alt="SyntaxLoom"
+                        className="logo"
+                    />
+
+                    <div className="brand">
+
+                        <h2>
+
+                            SyntaxLoom
+
+                        </h2>
+
+                        <span>
+
+                            Software Development &
+                            Digital Solutions
+
+                        </span>
+
                     </div>
-                </div>
-                <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
-                    {isMenuOpen ? '✖' : '☰'}
+
+                </a>
+
+                {/* ==========================
+                    MOBILE MENU
+                ========================== */}
+
+                <button
+
+                    className="menu-toggle"
+
+                    onClick={toggleMenu}
+
+                    aria-label="Toggle Menu"
+
+                >
+
+                    {isMenuOpen ? <FiX /> : <FiMenu />}
+
                 </button>
+
             </div>
 
-            <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+            {/* ==========================
+                NAVIGATION
+            ========================== */}
+
+            <nav
+                className={`nav ${
+                    isMenuOpen ? "open" : ""
+                }`}
+            >
+
                 <ul className="nav-list">
-                    {navItems.map((item, index) => (
-                        <li
-                            key={item.name}
-                            onMouseEnter={() => handleMouseEnter(index)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <a
-                                href={item.id}
-                                className="dropdown-toggle"
-                                aria-label={`Toggle ${item.name} dropdown`}
+
+                    {navItems.map(
+                        (item, index) => (
+
+                            <li
+
+                                key={item.name}
+
+                                onMouseEnter={() =>
+                                    setExpandedIndex(
+                                        index
+                                    )
+                                }
+
+                                onMouseLeave={() =>
+                                    setExpandedIndex(
+                                        null
+                                    )
+                                }
+
                             >
-                                {item.name}
-                            </a>
-                            {expandedIndex === index && (
-                                <div className="dropdown-content">
-                                    {item.description.map((desc, descIndex) => (
-                                        <div key={descIndex} className="dropdown-item">
-                                            {desc}
+
+                                <a
+                                    href={item.id}
+                                    onClick={
+                                        closeMenu
+                                    }
+                                >
+
+                                    {item.name}
+
+                                </a>
+                                                                {/* ==========================
+                                    DROPDOWN
+                                ========================== */}
+
+                                {expandedIndex === index &&
+                                    item.description &&
+                                    item.description.length > 0 && (
+
+                                        <div className="dropdown-content">
+
+                                            {item.description.map(
+                                                (desc, descIndex) => (
+
+                                                    <div
+                                                        key={descIndex}
+                                                        className="dropdown-item"
+                                                    >
+
+                                                        {desc}
+
+                                                    </div>
+
+                                                )
+                                            )}
+
                                         </div>
-                                    ))}
-                                </div>
-                            )}
-                        </li>
-                    ))}
+
+                                    )}
+
+                            </li>
+
+                        )
+
+                    )}
+
                 </ul>
+
+                {/* ==========================
+                    CTA BUTTON
+                ========================== */}
+
+                <a
+                    href="#contact"
+                    className="header-btn"
+                    onClick={closeMenu}
+                >
+
+                    Get Started
+
+                </a>
+
             </nav>
+
         </header>
+
     );
+
 };
 
 export default Header;

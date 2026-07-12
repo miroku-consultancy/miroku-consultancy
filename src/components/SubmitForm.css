@@ -1,43 +1,663 @@
-/* src/components/SubmitForm.css */
-.submit-form-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: auto;
+/* =====================================================
+   SUBMIT PROJECT SECTION
+===================================================== */
+
+:root{
+
+    --submit-primary:#2563eb;
+    --submit-primary-dark:#1d4ed8;
+
+    --submit-text:#0f172a;
+    --submit-light:#64748b;
+
+    --submit-border:#e5e7eb;
+
+    --submit-bg:#f7faff;
+
+    --submit-white:#ffffff;
+
+    --submit-shadow:
+        0 18px 45px rgba(15,23,42,.08);
+
 }
 
-h1 {
-    text-align: center;
+/* =====================================================
+   SECTION
+===================================================== */
+
+#submit-form{
+
+    width:100%;
+
+    padding:90px 0;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37,99,235,.05),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #fbfdff,
+            #f4f8fc
+        );
+
 }
 
-.form-group {
-    margin-bottom: 15px;
+.submit-container{
+
+    width:92%;
+
+    max-width:1300px;
+
+    margin:auto;
+
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+/* =====================================================
+   HEADER
+===================================================== */
+
+.submit-header{
+
+    text-align:center;
+
+    max-width:850px;
+
+    margin:0 auto 70px;
+
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.submit-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 18px;
+
+    border-radius:40px;
+
+    background:#eaf2ff;
+
+    color:var(--submit-primary);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    margin-bottom:22px;
+
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.submit-header h2{
+
+    color:var(--submit-text);
+
+    font-size:48px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+    line-height:1.2;
+
 }
 
-button:hover {
-    background-color: #555;
+.submit-header p{
+
+    color:var(--submit-light);
+
+    font-size:17px;
+
+    line-height:1.9;
+
+}
+
+/* =====================================================
+   FORM WRAPPER
+===================================================== */
+
+.submit-form-wrapper{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    background:var(--submit-white);
+
+    border:1px solid var(--submit-border);
+
+    box-shadow:var(--submit-shadow);
+
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.submit-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:26px;
+
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:10px;
+
+    color:var(--submit-text);
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.submit-form input,
+.submit-form select,
+.submit-form textarea{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border:1px solid #dbe3ef;
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:var(--submit-text);
+
+    font-size:15px;
+
+    font-family:inherit;
+
+    outline:none;
+
+    transition:
+        all .35s ease;
+
+    box-sizing:border-box;
+
+}
+
+.submit-form textarea{
+
+    resize:vertical;
+
+    min-height:180px;
+
+}
+
+.submit-form input::placeholder,
+.submit-form textarea::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.submit-form select{
+
+    cursor:pointer;
+
+    appearance:none;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            #64748b 50%
+        ),
+        linear-gradient(
+            135deg,
+            #64748b 50%,
+            transparent 50%
+        );
+
+    background-position:
+        calc(100% - 22px) calc(50% - 3px),
+        calc(100% - 16px) calc(50% - 3px);
+
+    background-size:
+        6px 6px,
+        6px 6px;
+
+    background-repeat:no-repeat;
+
+}
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
+.submit-form input:focus,
+.submit-form select:focus,
+.submit-form textarea:focus{
+
+    border-color:var(--submit-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.08);
+
+}
+
+.submit-form input:hover,
+.submit-form select:hover,
+.submit-form textarea:hover{
+
+    border-color:#93c5fd;
+
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.submit-btn{
+
+    align-self:flex-start;
+
+    min-width:240px;
+
+    padding:16px 36px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        all .35s ease;
+
+}
+
+.submit-btn:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 18px 40px rgba(37,99,235,.30);
+
+}
+
+.submit-btn:active{
+
+    transform:
+        translateY(-1px);
+
+}
+
+.submit-btn:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.7;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.submit-loading{
+
+    padding:100px;
+
+    text-align:center;
+
+    color:var(--submit-light);
+
+    font-size:20px;
+
+}
+
+/* =====================================================
+   FORM ANIMATION
+===================================================== */
+
+.submit-form-wrapper{
+
+    animation:
+        submitFade .7s ease;
+
+}
+
+@keyframes submitFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width:1100px){
+
+    .submit-form-wrapper{
+
+        padding:35px;
+
+    }
+
+    .submit-header h2{
+
+        font-size:42px;
+
+    }
+
+    .submit-header p{
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width:768px){
+
+    #submit-form{
+
+        padding:60px 0;
+
+    }
+
+    .submit-container{
+
+        width:94%;
+
+    }
+
+    .submit-header{
+
+        margin-bottom:45px;
+
+    }
+
+    .submit-header h2{
+
+        font-size:34px;
+
+        line-height:1.3;
+
+    }
+
+    .submit-header p{
+
+        font-size:15px;
+
+        line-height:1.8;
+
+    }
+
+    .submit-form-wrapper{
+
+        padding:24px;
+
+        border-radius:22px;
+
+    }
+
+    .form-row{
+
+        grid-template-columns:1fr;
+
+        gap:18px;
+
+    }
+
+    .form-group label{
+
+        font-size:14px;
+
+    }
+
+    .submit-form input,
+    .submit-form select,
+    .submit-form textarea{
+
+        padding:14px 16px;
+
+        font-size:14px;
+
+    }
+
+    .submit-form textarea{
+
+        min-height:150px;
+
+    }
+
+    .submit-btn{
+
+        width:100%;
+
+        min-width:unset;
+
+        justify-content:center;
+
+        padding:15px 20px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width:480px){
+
+    .submit-header h2{
+
+        font-size:28px;
+
+    }
+
+    .submit-header p{
+
+        font-size:14px;
+
+    }
+
+    .submit-badge{
+
+        font-size:12px;
+
+        padding:7px 16px;
+
+    }
+
+    .submit-form-wrapper{
+
+        padding:18px;
+
+    }
+
+    .submit-form{
+
+        gap:20px;
+
+    }
+
+    .form-row{
+
+        gap:16px;
+
+    }
+
+    .submit-form input,
+    .submit-form select,
+    .submit-form textarea{
+
+        padding:13px 14px;
+
+        border-radius:12px;
+
+    }
+
+    .submit-btn{
+
+        font-size:14px;
+
+        border-radius:40px;
+
+    }
+
+}
+
+/* =====================================================
+   PREMIUM EFFECTS
+===================================================== */
+
+.submit-form-wrapper{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.submit-form-wrapper:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 24px 55px rgba(15,23,42,.12);
+
+}
+
+.submit-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.submit-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transition:left .6s ease;
+
+}
+
+.submit-btn:hover::before{
+
+    left:120%;
+
+}
+
+.submit-form input,
+.submit-form select,
+.submit-form textarea{
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .2s ease;
+
+}
+
+.submit-form input:focus,
+.submit-form select:focus,
+.submit-form textarea:focus{
+
+    transform:translateY(-1px);
+
 }

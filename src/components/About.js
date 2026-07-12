@@ -1,121 +1,508 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+    useEffect,
+    useMemo,
+    useState
+} from "react";
+
+import "./About.css";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
-    const [aboutInfo, setAboutInfo] = useState(null);
-    const [error, setError] = useState(null);
-    const [expandedSection, setExpandedSection] = useState(null);
+
+    const [aboutData, setAboutData] = useState(null);
+
+    const [selectedSection, setSelectedSection] = useState(null);
+
+    const [loading, setLoading] = useState(true);
+
+    const [error, setError] = useState("");
+
+    /* ==========================================
+       AOS
+    ========================================== */
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/content.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setAboutInfo(data.about);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
 
-        fetchData();
+        AOS.init({
+
+            duration: 900,
+            easing: "ease-out-cubic",
+            once: true,
+            offset: 120
+
+        });
+
     }, []);
 
-    const toggleSection = (section) => {
-        setExpandedSection(expandedSection === section ? null : section);
-    };
+    /* ==========================================
+       LOAD CONTENT
+    ========================================== */
 
-    if (error) return <div>Error: {error}</div>;
-    if (!aboutInfo) return <div>Loading...</div>;
+    useEffect(() => {
+
+        const loadAbout = async () => {
+
+            try {
+
+                const response = await fetch(
+                    "/content.json"
+                );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load About section."
+                    );
+
+                }
+
+                const data =
+                    await response.json();
+
+                setAboutData(
+                    data.about
+                );
+
+            }
+
+            catch (err) {
+
+                setError(
+                    err.message
+                );
+
+            }
+
+            finally {
+
+                setLoading(false);
+
+            }
+
+        };
+
+        loadAbout();
+
+    }, []);
+
+    /* ==========================================
+       DEFAULT SELECTED CARD
+    ========================================== */
+
+    useEffect(() => {
+
+        if (
+            aboutData &&
+            aboutData.sections?.length &&
+            !selectedSection
+        ) {
+
+            setSelectedSection(
+                aboutData.sections[0]
+            );
+
+        }
+
+    }, [
+        aboutData,
+        selectedSection
+    ]);
+
+    /* ==========================================
+       REMAINING CARDS
+    ========================================== */
+
+    const remainingSections =
+        useMemo(() => {
+
+            if (
+                !aboutData ||
+                !selectedSection
+            ) {
+
+                return [];
+
+            }
+
+            return aboutData.sections.filter(
+
+                section =>
+
+                    section.id !==
+                    selectedSection.id
+
+            );
+
+        }, [
+
+            aboutData,
+            selectedSection
+
+        ]);
+
+    /* ==========================================
+       COMPANY STATS
+    ========================================== */
+
+    const companyStats = [
+
+        {
+
+            number: "50+",
+            label:
+                "Projects Delivered"
+
+        },
+
+        {
+
+            number: "10+",
+            label:
+                "Industries Served"
+
+        },
+
+        {
+
+            number: "99%",
+            label:
+                "Customer Satisfaction"
+
+        },
+
+        {
+
+            number: "24/7",
+            label:
+                "Support & Maintenance"
+
+        }
+
+    ];
+
+    /* ==========================================
+       LOADING
+    ========================================== */
+
+    if (loading) {
+
+        return (
+
+            <div className="loading">
+
+                Loading...
+
+            </div>
+
+        );
+
+    }
+
+    if (error) {
+
+        return (
+
+            <div className="loading">
+
+                {error}
+
+            </div>
+
+        );
+
+    }
+
+    if (!aboutData) {
+
+        return null;
+
+    }
 
     return (
-        <section id="about" style={styles.aboutSection}>
-            <h2>{aboutInfo.heading}</h2>
 
-            {/* Team Section */}
-            <div style={styles.content}>
-                <div style={styles.imageContainer}>
-                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.teamImage}`} alt="Our Team" style={styles.image} />
+        <section
+            id="about"
+        >
+
+            <div className="about-container">
+
+                {/* Header */}
+
+                <div
+                    className="about-header"
+                    data-aos="fade-up"
+                >
+
+                    <h2
+                        className="about-title"
+                    >
+
+                        {aboutData.heading}
+
+                    </h2>
+
+                    <p
+                        className="about-subtitle"
+                    >
+
+                        {aboutData.subtitle}
+
+                    </p>
+
                 </div>
-                <div style={styles.textContainer}>
-                    <div>
-                        {aboutInfo.description.slice(0, expandedSection === 'team' ? aboutInfo.description.length : 1).map((para, index) => (
-                            <p key={index}>{para}</p>
-                        ))}
+                                {/* ==========================================
+                    FEATURED SECTION
+                ========================================== */}
+
+                {selectedSection && (
+
+                    <div
+                        className="about-selected"
+                        data-aos="fade-up"
+                    >
+
+                        <div className="about-card active">
+
+                            <img
+                                src={`${process.env.PUBLIC_URL}/${selectedSection.image}`}
+                                alt={selectedSection.title}
+                                className="about-image"
+                                loading="lazy"
+                            />
+
+                            <div className="about-content">
+
+                                <span className="about-tag">
+
+                                    About SyntaxLoom
+
+                                </span>
+
+                                <h3>
+
+                                    {selectedSection.title}
+
+                                </h3>
+
+                                {selectedSection.description.map(
+
+                                    (item, index) => (
+
+                                        <p key={index}>
+
+                                            {item}
+
+                                        </p>
+
+                                    )
+
+                                )}
+
+                            </div>
+
+                        </div>
+
                     </div>
-                    <button onClick={() => toggleSection('team')} style={styles.toggleButton}>
-                        {expandedSection === 'team' ? 'Hide Details' : 'Show Details'}
-                    </button>
+
+                )}
+
+                {/* ==========================================
+                    COMPANY STATISTICS
+                ========================================== */}
+
+                <div
+                    className="about-stats"
+                    data-aos="fade-up"
+                >
+
+                    {companyStats.map(
+
+                        (stat, index) => (
+
+                            <div
+                                key={index}
+                                className="about-stat"
+                                data-aos="zoom-in"
+                                data-aos-delay={
+                                    index * 100
+                                }
+                            >
+
+                                <h3>
+
+                                    {stat.number}
+
+                                </h3>
+
+                                <span>
+
+                                    {stat.label}
+
+                                </span>
+
+                            </div>
+
+                        )
+
+                    )}
+
                 </div>
+
+                {/* ==========================================
+                    REMAINING CARDS
+                ========================================== */}
+
+                <div
+                    className="about-grid"
+                >
+
+                    {remainingSections.map(
+
+                        (section, index) => (
+
+                            <div
+                                key={section.id}
+                                className="about-card"
+                                data-aos="fade-up"
+                                data-aos-delay={
+                                    index * 100
+                                }
+                            >
+
+                                <img
+                                    src={`${process.env.PUBLIC_URL}/${section.image}`}
+                                    alt={section.title}
+                                    className="about-image"
+                                    loading="lazy"
+                                />
+
+                                <div
+                                    className="about-content"
+                                >
+
+                                    <span
+                                        className="about-tag"
+                                    >
+
+                                        Learn More
+
+                                    </span>
+
+                                    <h3>
+
+                                        {section.title}
+
+                                    </h3>
+
+                                    <p>
+
+                                        {
+                                            section
+                                                .description[0]
+                                        }
+
+                                    </p>
+
+                                    <button
+                                        className="about-btn"
+                                        onClick={() =>
+                                            setSelectedSection(
+                                                section
+                                            )
+                                        }
+                                    >
+
+                                        Explore
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        )
+
+                    )}
+
+                </div>
+                                {/* ==========================================
+                    CALL TO ACTION
+                ========================================== */}
+
+                <div
+                    className="about-cta"
+                    data-aos="fade-up"
+                >
+
+                    <div
+                        className="about-cta-content"
+                    >
+
+                        <span
+                            className="about-cta-badge"
+                        >
+
+                            Why Choose SyntaxLoom?
+
+                        </span>
+
+                        <h2>
+
+                            Building Innovative Software
+                            Solutions For Modern Businesses
+
+                        </h2>
+
+                        <p>
+
+                            At SyntaxLoom, we combine
+                            technical expertise, agile
+                            methodologies and modern cloud
+                            technologies to deliver secure,
+                            scalable and high-performance
+                            digital solutions that help
+                            businesses innovate, grow and
+                            stay ahead in a rapidly changing
+                            world.
+
+                        </p>
+
+                        <div
+                            className="about-cta-actions"
+                        >
+
+                            <a
+                                href="#services"
+                                className="about-primary-btn"
+                            >
+
+                                Explore Services
+
+                            </a>
+
+                            <a
+                                href="#contact"
+                                className="about-secondary-btn"
+                            >
+
+                                Contact Us
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            {/* Office Section */}
-            <div style={styles.content}>
-                <div style={styles.imageContainer}>
-                    <img src={`${process.env.PUBLIC_URL}/${aboutInfo.office.image}`} alt="Our Office" style={styles.officeImage} />
-                </div>
-                <div style={styles.textContainer}>
-                    <p style={styles.officeTitle}>{aboutInfo.office.title}</p>
-                    <p style={styles.officeSubtitle}>{aboutInfo.office.subtitle}</p>
-                    <div>
-                        {aboutInfo.office.description.split('. ').slice(0, expandedSection === 'office' ? undefined : 1).map((para, index) => (
-                            <p key={index}>{para}.</p>
-                        ))}
-                    </div>
-                    <button onClick={() => toggleSection('office')} style={styles.toggleButton}>
-                        {expandedSection === 'office' ? 'Hide Details' : 'Show Details'}
-                    </button>
-                </div>
-            </div>
         </section>
-    );
-};
 
-const styles = {
-    aboutSection: {
-        padding: '40px 20px',
-        textAlign: 'center',
-        backgroundColor: '#f9f9f9',
-    },
-    content: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginBottom: '40px',
-    },
-    textContainer: {
-        marginTop: '20px',
-        maxWidth: '600px',
-    },
-    imageContainer: {
-        width: '100%',
-    },
-    image: {
-        width: '100%',
-        borderRadius: '8px',
-    },
-    officeImage: {
-        width: '100%',
-        borderRadius: '8px',
-    },
-    officeTitle: {
-        fontSize: '1.5em',
-        fontWeight: 'bold',
-    },
-    officeSubtitle: {
-        fontSize: '1.2em',
-        marginBottom: '10px',
-    },
-    toggleButton: {
-        marginTop: '20px',
-        padding: '10px 20px',
-        backgroundColor: '#007BFF',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
+    );
+
 };
 
 export default About;

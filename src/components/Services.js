@@ -1,77 +1,53 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import "./Services.css";
 
 const Services = () => {
 
-    const [servicesData, setServicesData] = useState([]);
-    const [selectedService, setSelectedService] = useState(null);
-
-    const selectedRef = useRef(null);
+    const [services, setServices] = useState([]);
+    const [error, setError] = useState("");
 
     useEffect(() => {
 
-        const fetchData = async () => {
+        const loadServices = async () => {
 
             try {
 
                 const response = await fetch("/content.json");
+
+                if (!response.ok) {
+                    throw new Error("Unable to load services.");
+                }
+
                 const data = await response.json();
 
-                setServicesData(data.services);
+                setServices(data.services);
 
-            } catch (error) {
+            }
+            catch (err) {
 
-                console.error("Error fetching services:", error);
+                setError(err.message);
 
             }
 
         };
 
-        fetchData();
+        loadServices();
 
     }, []);
 
-    useEffect(() => {
+    if (error) {
+        return <div className="loading">{error}</div>;
+    }
 
-        if (selectedService && selectedRef.current) {
-
-            selectedRef.current.scrollIntoView({
-
-                behavior: "smooth",
-                block: "start"
-
-            });
-
-        }
-
-    }, [selectedService]);
-
-    const handleSelect = (service) => {
-
-        setSelectedService(service);
-
-    };
-
-    const handleClose = () => {
-
-        setSelectedService(null);
-
-    };
-
-    const remainingServices = useMemo(() => {
-
-        if (!selectedService) return servicesData;
-
-        return servicesData.filter(
-            (item) => item.title !== selectedService.title
-        );
-
-    }, [servicesData, selectedService]);
-
-    if (!servicesData.length) {
-
-        return <div className="loading">Loading...</div>;
-
+    if (!services.length) {
+        return <div className="loading">Loading Services...</div>;
     }
 
     return (
@@ -83,115 +59,94 @@ const Services = () => {
             </h2>
 
             <p className="service-subtitle">
-                We provide end-to-end software development services
-                tailored to your business needs.
+                Delivering reliable technology solutions that empower businesses
+                to innovate, automate and scale with confidence.
             </p>
 
-            {selectedService && (
+            <Swiper
 
-                <div
-                    className="selected-layout"
-                    ref={selectedRef}
-                >
+                modules={[Navigation, Pagination, Autoplay]}
 
-                    <div className="selected-card">
+                slidesPerView={1}
 
-                        <img
-                            src={`${process.env.PUBLIC_URL}/${selectedService.image}`}
-                            alt={selectedService.title}
-                            className="service-image"
-                        />
+                loop
 
-                        <div className="service-content">
+                navigation
 
-                            <h3>{selectedService.title}</h3>
+                pagination={{
+                    clickable: true
+                }}
 
-                            <p>
-                                {selectedService.description}
-                            </p>
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false
+                }}
 
-                            <button
-                                className="service-btn"
-                                onClick={handleClose}
-                            >
-                                Hide Details
-                            </button>
+                speed={900}
 
-                        </div>
-
-                    </div>
-
-                    <div className="details-panel">
-
-                        <h2>
-                            {selectedService.title} Features
-                        </h2>
-
-                        <ul>
-
-                            {selectedService.details.map((item, index) => (
-
-                                <li key={index}>
-                                    ✔ {item}
-                                </li>
-
-                            ))}
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            )}
-
-            <div
-                className={
-                    selectedService
-                        ? "remaining-grid"
-                        : "services-list"
-                }
             >
 
-                {(selectedService
-                    ? remainingServices
-                    : servicesData
-                ).map((service, index) => (
+                {services.map((service, index) => (
 
-                    <div
-                        key={index}
-                        className="service-card"
-                    >
+                    <SwiperSlide key={service.id}>
 
-                        <img
-                            src={`${process.env.PUBLIC_URL}/${service.image}`}
-                            alt={service.title}
-                            className="service-image"
-                        />
+                        <div
+                            className={`service-slide ${
+                                index % 2 === 0 ? "" : "reverse"
+                            }`}
+                        >
 
-                        <div className="service-content">
+                            <div className="service-text">
 
-                            <h3>{service.title}</h3>
+                                <span className="service-tag">
+                                    {service.tag}
+                                </span>
 
-                            <p>{service.description}</p>
+                                <h2>
+                                    {service.title}
+                                </h2>
 
-                            <button
-                                className="service-btn"
-                                onClick={() => handleSelect(service)}
-                            >
-                                Show Details
-                            </button>
+                                <p>
+                                    {service.description}
+                                </p>
+
+                                <ul className="service-features">
+
+                                    {service.details.map((item) => (
+
+                                        <li key={item}>
+                                            {item}
+                                        </li>
+
+                                    ))}
+
+                                </ul>
+
+                            </div>
+
+                            <div className="service-image-wrapper">
+
+                                <img
+                                    src={`${process.env.PUBLIC_URL}/${service.image}`}
+                                    alt={service.title}
+                                    className="service-image"
+                                    loading="lazy"
+                                />
+
+                            </div>
 
                         </div>
 
-                    </div>
-                                    ))}
+                    </SwiperSlide>
 
-            </div>
+                ))}
+
+            </Swiper>
 
         </section>
 
     );
+
 };
 
 export default Services;
