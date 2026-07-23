@@ -751,3 +751,7 @@
     transition:all .35s ease;
 
 }
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important;
+}

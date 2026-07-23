@@ -130,13 +130,7 @@ const Industry = () => {
                                 data-aos={reverse ? "fade-left" : "fade-right"}
                             >
 
-                                <span
-                                    className="industry-number"
-                                    data-aos="fade-up"
-                                    data-aos-delay="100"
-                                >
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
+                               
 
                                 <h3
                                     data-aos="fade-up"
