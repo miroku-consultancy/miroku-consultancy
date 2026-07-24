@@ -119,3 +119,11 @@ body{
     overflow-x:hidden;
 
 }
+
+section {
+  padding: 20px;
+  margin: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}

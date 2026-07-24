@@ -1,9 +1,4 @@
-import React, {
-    useEffect,
-    useState
-} from "react";
-
-import { init, send } from "emailjs-com";
+import React, { useEffect, useState } from "react";
 
 import "./SubmitForm.css";
 
@@ -21,34 +16,15 @@ const SubmitForm = () => {
     const [formData, setFormData] = useState({
 
         name: "",
-
         email: "",
-
         mobile: "",
-
         company: "",
-
         projectType: "",
-
         budget: "",
-
         timeline: "",
-
         description: ""
 
     });
-
-    /* ==========================================
-       EMAIL JS
-    ========================================== */
-
-    useEffect(() => {
-
-        init(
-            process.env.REACT_APP_EMAILJS_USER_ID
-        );
-
-    }, []);
 
     /* ==========================================
        AOS
@@ -59,11 +35,8 @@ const SubmitForm = () => {
         AOS.init({
 
             duration: 900,
-
             easing: "ease-out-cubic",
-
             once: true,
-
             offset: 100
 
         });
@@ -80,25 +53,25 @@ const SubmitForm = () => {
 
             try {
 
-                const response = await fetch(
-                    "/content.json"
-                );
+                const response = await fetch("/content.json");
 
-                const data =
-                    await response.json();
+                if (!response.ok) {
 
-                setFormContent(
-                    data.submitForm
-                );
+                    throw new Error("Unable to load submit form.");
+
+                }
+
+                const data = await response.json();
+                console.log(data, "data")
+
+                setFormContent(data.submitForm);
 
             }
-
             catch (err) {
 
                 console.error(err);
 
             }
-
             finally {
 
                 setLoading(false);
@@ -117,13 +90,7 @@ const SubmitForm = () => {
 
     const handleChange = (e) => {
 
-        const {
-
-            name,
-
-            value
-
-        } = e.target;
+        const { name, value } = e.target;
 
         setFormData((prev) => ({
 
@@ -134,383 +101,34 @@ const SubmitForm = () => {
         }));
 
     };
-
-    if (loading) {
-
-        return (
-
-            <div className="submit-loading">
-
-                Loading...
-
-            </div>
-
-        );
-
-    }
-
-    return (
-
-        <section
-            id="submit-form"
-        >
-
-            <div
-                className="submit-container"
-            >
-
-                {/* ==========================
-                    HEADER
-                ========================== */}
-
-                <div
-                    className="submit-header"
-                    data-aos="fade-up"
-                >
-
-                    <span
-                        className="submit-badge"
-                    >
-
-                        Start Your Project
-
-                    </span>
-
-                    <h2>
-
-                        {formContent.heading}
-
-                    </h2>
-
-                    <p>
-
-                        {formContent.description}
-
-                    </p>
-
-                </div>
-                                {/* ==========================================
-                    PROJECT FORM
-                ========================================== */}
-
-                <div
-                    className="submit-form-wrapper"
-                    data-aos="fade-up"
-                >
-
-                    <form
-                        className="submit-form"
-                        onSubmit={handleSubmit}
-                    >
-
-                        {/* =====================
-                            ROW 1
-                        ====================== */}
-
-                        <div className="form-row">
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Full Name *
-
-                                </label>
-
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Enter your full name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                />
-
-                            </div>
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Email Address *
-
-                                </label>
-
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-
-                            </div>
-
-                        </div>
-
-                        {/* =====================
-                            ROW 2
-                        ====================== */}
-
-                        <div className="form-row">
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Mobile Number *
-
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    name="mobile"
-                                    placeholder="Enter your mobile number"
-                                    value={formData.mobile}
-                                    onChange={handleChange}
-                                    required
-                                />
-
-                            </div>
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Company
-
-                                </label>
-
-                                <input
-                                    type="text"
-                                    name="company"
-                                    placeholder="Company Name"
-                                    value={formData.company}
-                                    onChange={handleChange}
-                                />
-
-                            </div>
-
-                        </div>
-
-                        {/* =====================
-                            ROW 3
-                        ====================== */}
-
-                        <div className="form-row">
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Project Type
-
-                                </label>
-
-                                <select
-                                    name="projectType"
-                                    value={formData.projectType}
-                                    onChange={handleChange}
-                                >
-
-                                    <option value="">
-
-                                        Select Project
-
-                                    </option>
-
-                                    <option>
-
-                                        Website
-
-                                    </option>
-
-                                    <option>
-
-                                        Web Application
-
-                                    </option>
-
-                                    <option>
-
-                                        Mobile App
-
-                                    </option>
-
-                                    <option>
-
-                                        SaaS Platform
-
-                                    </option>
-
-                                    <option>
-
-                                        AI Solution
-
-                                    </option>
-
-                                    <option>
-
-                                        Cloud Migration
-
-                                    </option>
-
-                                    <option>
-
-                                        Enterprise Software
-
-                                    </option>
-
-                                    <option>
-
-                                        Other
-
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                            <div className="form-group">
-
-                                <label>
-
-                                    Estimated Budget
-
-                                </label>
-
-                                <select
-                                    name="budget"
-                                    value={formData.budget}
-                                    onChange={handleChange}
-                                >
-
-                                    <option value="">
-
-                                        Select Budget
-
-                                    </option>
-
-                                    <option>
-
-                                        Under $5,000
-
-                                    </option>
-
-                                    <option>
-
-                                        $5,000 - $10,000
-
-                                    </option>
-
-                                    <option>
-
-                                        $10,000 - $25,000
-
-                                    </option>
-
-                                    <option>
-
-                                        $25,000+
-
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        {/* =====================
-                            ROW 4
-                        ====================== */}
-
-                        <div className="form-group">
-
-                            <label>
-
-                                Expected Timeline
-
-                            </label>
-
-                            <input
-                                type="text"
-                                name="timeline"
-                                placeholder="Example: 2 Months"
-                                value={formData.timeline}
-                                onChange={handleChange}
-                            />
-
-                        </div>
-
-                        {/* =====================
-                            DESCRIPTION
-                        ====================== */}
-
-                        <div className="form-group">
-
-                            <label>
-
-                                Project Description *
-
-                            </label>
-
-                            <textarea
-                                rows="8"
-                                name="description"
-                                placeholder="Tell us about your project requirements..."
-                                value={formData.description}
-                                onChange={handleChange}
-                                required
-                            />
-
-                        </div>
-                                                {/* =====================
-                            SUBMIT BUTTON
-                        ====================== */}
-
-                        <button
-                            type="submit"
-                            className="submit-btn"
-                            disabled={submitting}
-                        >
-
-                            {submitting
-                                ? "Sending..."
-                                : "Submit Project Inquiry"}
-
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    );
-
     /* ==========================================
-       SUBMIT
-    ========================================== */
+   SUBMIT
+========================================== */
 
-    async function handleSubmit(e) {
+const handleSubmit = async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        try {
+    try {
 
-            setSubmitting(true);
+        setSubmitting(true);
 
-            await send(
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method: "POST",
 
-                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-                process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+                body: JSON.stringify({
 
-                {
+                    access_key: "2a5092aa-ce46-4fa9-b342-3b33a52d3cc0",
+
+                    subject: "New Project Inquiry",
+
+                    from_name: formData.name,
 
                     name: formData.name,
 
@@ -528,54 +146,297 @@ const SubmitForm = () => {
 
                     description: formData.description
 
-                }
+                })
 
-            );
+            }
+        );
 
-            alert(
-                "Thank you! Your project inquiry has been submitted successfully."
-            );
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert("Thank you! Your project inquiry has been submitted successfully.");
 
             setFormData({
 
                 name: "",
-
                 email: "",
-
                 mobile: "",
-
                 company: "",
-
                 projectType: "",
-
                 budget: "",
-
                 timeline: "",
-
                 description: ""
 
             });
 
-        }
+        } else {
 
-        catch (err) {
-
-            console.error(err);
-
-            alert(
-                "Unable to submit your inquiry. Please try again later."
-            );
-
-        }
-
-        finally {
-
-            setSubmitting(false);
+            alert(result.message || "Unable to submit your inquiry.");
 
         }
 
     }
+    catch (err) {
 
+        console.error(err);
+
+        alert("Something went wrong. Please try again.");
+
+    }
+    finally {
+
+        setSubmitting(false);
+
+    }
+
+};
+
+if (loading) {
+
+    return (
+
+        <div className="submit-loading">
+
+            Loading...
+
+        </div>
+
+    );
+
+}
+return (
+    <section id="submit-form">
+
+        <div className="submit-container">
+
+            {/* HEADER */}
+
+            <div
+                className="submit-header"
+                data-aos="fade-up"
+            >
+
+                <span className="submit-badge">
+                    Start Your Project
+                </span>
+
+                <h2>{formContent.heading}</h2>
+
+                <p>{formContent.description}</p>
+
+            </div>
+
+            {/* FORM */}
+
+            <div
+                className="submit-form-wrapper"
+                data-aos="fade-up"
+            >
+
+                <form
+                    className="submit-form"
+                    onSubmit={handleSubmit}
+                >
+
+                    {/* ROW 1 */}
+
+                    <div className="form-row">
+
+                        <div className="form-group">
+
+                            <label htmlFor="name">
+                                Full Name *
+                            </label>
+
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                placeholder="Enter your full name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                autoComplete="name"
+                                required
+                            />
+
+                        </div>
+
+                        <div className="form-group">
+
+                            <label htmlFor="email">
+                                Email Address *
+                            </label>
+
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                autoComplete="email"
+                                required
+                            />
+
+                        </div>
+
+                    </div>
+
+                    {/* ROW 2 */}
+
+                    <div className="form-row">
+
+                        <div className="form-group">
+
+                            <label htmlFor="mobile">
+                                Mobile Number *
+                            </label>
+
+                            <input
+                                id="mobile"
+                                type="tel"
+                                name="mobile"
+                                placeholder="Enter your mobile number"
+                                value={formData.mobile}
+                                onChange={handleChange}
+                                pattern="[0-9]{10}"
+                                maxLength={10}
+                                required
+                            />
+
+                        </div>
+
+                        <div className="form-group">
+
+                            <label htmlFor="company">
+                                Company
+                            </label>
+
+                            <input
+                                id="company"
+                                type="text"
+                                name="company"
+                                placeholder="Company Name"
+                                value={formData.company}
+                                onChange={handleChange}
+                            />
+
+                        </div>
+
+                    </div>
+
+                    {/* ROW 3 */}
+
+                    <div className="form-row">
+
+                        <div className="form-group">
+
+                            <label htmlFor="projectType">
+                                Project Type
+                            </label>
+
+                            <select
+                                id="projectType"
+                                name="projectType"
+                                value={formData.projectType}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select Project</option>
+                                <option value="Website">Website</option>
+                                <option value="Web Application">Web Application</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="SaaS Platform">SaaS Platform</option>
+                                <option value="AI Solution">AI Solution</option>
+                                <option value="Cloud Migration">Cloud Migration</option>
+                                <option value="Enterprise Software">Enterprise Software</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                        </div>
+
+                        <div className="form-group">
+
+                            <label htmlFor="budget">
+                                Estimated Budget
+                            </label>
+
+                            <select
+                                id="budget"
+                                name="budget"
+                                value={formData.budget}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select Budget</option>
+                                <option value="Under $5,000">Under $5,000</option>
+                                <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                                <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                                <option value="$25,000+">$25,000+</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    {/* TIMELINE */}
+
+                    <div className="form-group">
+
+                        <label htmlFor="timeline">
+                            Expected Timeline
+                        </label>
+
+                        <input
+                            id="timeline"
+                            type="text"
+                            name="timeline"
+                            placeholder="Example: 2 Months"
+                            value={formData.timeline}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    {/* DESCRIPTION */}
+
+                    <div className="form-group">
+
+                        <label htmlFor="description">
+                            Project Description *
+                        </label>
+
+                        <textarea
+                            id="description"
+                            rows="8"
+                            name="description"
+                            placeholder="Tell us about your project requirements..."
+                            value={formData.description}
+                            onChange={handleChange}
+                            required
+                        />
+
+                    </div>
+
+                    {/* BUTTON */}
+
+                    <button
+                        type="submit"
+                        className="submit-btn"
+                        disabled={submitting}
+                    >
+                        {submitting
+                            ? "Sending..."
+                            : "Submit Project Inquiry"}
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+);
 };
 
 export default SubmitForm;
