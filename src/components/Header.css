@@ -25,29 +25,31 @@
 
 .header{
 
-    position:sticky;
+    position:fixed;
 
     top:0;
 
     left:0;
 
-    z-index:9999;
+    right:0;
 
     width:100%;
 
     height:74px;
 
+    z-index:9999;
+
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
     padding:0 6%;
 
     box-sizing:border-box;
 
-    background:var(--header-bg);
+    background:rgba(255,255,255,.95);
 
     backdrop-filter:blur(18px);
 
@@ -103,11 +105,17 @@
 
     transition:.35s;
 
+    box-shadow:
+        0 10px 25px rgba(15,23,42,.08);
+
 }
 
 .logo:hover{
 
     transform:scale(1.05);
+
+    box-shadow:
+        0 18px 35px rgba(37,99,235,.18);
 
 }
 
@@ -146,6 +154,55 @@
 }
 
 /* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-toggle{
+
+    display:none;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#eef4ff;
+
+    color:var(--header-primary);
+
+    cursor:pointer;
+
+    font-size:24px;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.3s;
+
+    flex-shrink:0;
+
+}
+
+.menu-toggle:hover{
+
+    background:#dbeafe;
+
+    transform:scale(1.05);
+
+}
+
+.menu-toggle svg{
+
+    width:24px;
+
+    height:24px;
+
+}
+/* =====================================================
    NAVIGATION
 ===================================================== */
 
@@ -173,8 +230,6 @@
 
     justify-content:flex-end;
 
-    flex-wrap:nowrap;
-
     gap:28px;
 
     list-style:none;
@@ -188,6 +243,14 @@
 .nav-list li{
 
     position:relative;
+
+    transition:.3s;
+
+}
+
+.nav-list li:hover{
+
+    transform:translateY(-1px);
 
 }
 
@@ -244,6 +307,7 @@
     width:100%;
 
 }
+
 /* =====================================================
    DROPDOWN
 ===================================================== */
@@ -256,9 +320,7 @@
 
     left:50%;
 
-    transform:
-        translateX(-50%)
-        translateY(12px);
+    transform:translateX(-50%) translateY(12px);
 
     min-width:270px;
 
@@ -274,8 +336,7 @@
 
     border:1px solid rgba(0,0,0,.06);
 
-    box-shadow:
-        0 20px 50px rgba(15,23,42,.10);
+    box-shadow:0 20px 50px rgba(15,23,42,.10);
 
     opacity:0;
 
@@ -283,8 +344,7 @@
 
     pointer-events:none;
 
-    transition:
-        all .28s ease;
+    transition:all .28s ease;
 
     z-index:999;
 
@@ -298,9 +358,7 @@
 
     pointer-events:auto;
 
-    transform:
-        translateX(-50%)
-        translateY(0);
+    transform:translateX(-50%) translateY(0);
 
 }
 
@@ -338,17 +396,21 @@
 
 .header-btn{
 
-    flex-shrink:0;
-
     display:inline-flex;
 
     align-items:center;
 
     justify-content:center;
 
+    flex-shrink:0;
+
     padding:13px 28px;
 
     border-radius:999px;
+
+    text-decoration:none;
+
+    color:#fff;
 
     background:linear-gradient(
         135deg,
@@ -356,105 +418,19 @@
         var(--header-primary-dark)
     );
 
-    color:#fff;
+    transition:.35s;
 
-    text-decoration:none;
+    position:relative;
+
+    overflow:hidden;
 
 }
 
 .header-btn:hover{
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 
-    box-shadow:
-        0 18px 35px rgba(37,99,235,.30);
-
-}
-
-/* =====================================================
-   MOBILE MENU BUTTON
-===================================================== */
-
-.menu-toggle{
-
-    display:none;
-
-    width:46px;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#eef4ff;
-
-    color:var(--header-primary);
-
-    cursor:pointer;
-
-    font-size:24px;
-
-    align-items:center;
-
-    justify-content:center;
-
-    transition:.3s;
-
-}
-
-.menu-toggle:hover{
-
-    background:#dbeafe;
-
-    transform:scale(1.05);
-
-}
-
-.menu-toggle svg{
-
-    width:24px;
-
-    height:24px;
-
-}
-
-/* =====================================================
-   PREMIUM EFFECTS
-===================================================== */
-
-.logo{
-
-    box-shadow:
-        0 10px 25px rgba(15,23,42,.08);
-
-}
-
-.logo:hover{
-
-    box-shadow:
-        0 18px 35px rgba(37,99,235,.18);
-
-}
-
-.nav-list li{
-
-    transition:.3s;
-
-}
-
-.nav-list li:hover{
-
-    transform:translateY(-1px);
-
-}
-
-.header-btn{
-
-    position:relative;
-
-    overflow:hidden;
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
 
 }
 
@@ -472,13 +448,12 @@
 
     height:100%;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.25),
-            transparent
-        );
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
 
     transition:left .6s ease;
 
@@ -510,6 +485,16 @@
     .brand h2{
 
         font-size:24px;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
 
     }
 
@@ -545,6 +530,22 @@
 
         padding:0 20px;
 
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+    }
+
+    .logo-container{
+
+        flex:1;
+
+        display:flex;
+
+        align-items:center;
+
     }
 
     .logo{
@@ -571,6 +572,14 @@
 
         display:flex;
 
+        align-items:center;
+
+        justify-content:center;
+
+        margin-left:auto;
+
+        z-index:10001;
+
     }
 
     .nav{
@@ -593,7 +602,7 @@
 
         box-shadow:0 18px 45px rgba(15,23,42,.08);
 
-        display:flex;
+        display:none;
 
         flex-direction:column;
 
@@ -603,23 +612,11 @@
 
         padding:24px;
 
-        opacity:0;
-
-        visibility:hidden;
-
-        transform:translateY(-15px);
-
-        transition:all .3s ease;
-
     }
 
     .nav.open{
 
-        opacity:1;
-
-        visibility:visible;
-
-        transform:translateY(0);
+        display:flex;
 
     }
 
@@ -629,9 +626,9 @@
 
         flex-direction:column;
 
-        gap:8px;
-
         align-items:stretch;
+
+        gap:8px;
 
     }
 
@@ -667,7 +664,7 @@
 
         position:static;
 
-        transform:none !important;
+        transform:none;
 
         opacity:1;
 
@@ -679,9 +676,9 @@
 
         min-width:100%;
 
-        box-shadow:none;
-
         border:1px solid rgba(15,23,42,.08);
+
+        box-shadow:none;
 
         background:#f8fbff;
 

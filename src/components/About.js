@@ -148,37 +148,37 @@ const About = () => {
 
     const companyStats = [
 
-        {
+        // {
 
-            number: "50+",
-            label:
-                "Projects Delivered"
+        //     number: "50+",
+        //     label:
+        //         "Projects Delivered"
 
-        },
+        // },
 
-        {
+        // {
 
-            number: "10+",
-            label:
-                "Industries Served"
+        //     number: "10+",
+        //     label:
+        //         "Industries Served"
 
-        },
+        // },
 
-        {
+        // {
 
-            number: "99%",
-            label:
-                "Customer Satisfaction"
+        //     number: "99%",
+        //     label:
+        //         "Customer Satisfaction"
 
-        },
+        // },
 
-        {
+        // {
 
-            number: "24/7",
-            label:
-                "Support & Maintenance"
+        //     number: "24/7",
+        //     label:
+        //         "Support & Maintenance"
 
-        }
+        // }
 
     ];
 

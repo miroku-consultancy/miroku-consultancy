@@ -2,7 +2,9 @@ import React, {
     useEffect,
     useState
 } from "react";
+
 import { FiMenu, FiX } from "react-icons/fi";
+
 import "./Header.css";
 
 import logo from "../assets/images/logo.jpeg";
@@ -86,7 +88,6 @@ const Header = () => {
         );
 
         return () =>
-
             window.removeEventListener(
                 "scroll",
                 handleScroll
@@ -141,43 +142,34 @@ const Header = () => {
                     <div className="brand">
 
                         <h2>
-
                             SyntaxLoom
-
                         </h2>
 
                         <span>
-
                             Software Development &
                             Digital Solutions
-
                         </span>
 
                     </div>
 
                 </a>
 
-                {/* ==========================
-                    MOBILE MENU
-                ========================== */}
-
-                <button
-
-                    className="menu-toggle"
-
-                    onClick={toggleMenu}
-
-                    aria-label="Toggle Menu"
-
-                >
-
-                    {isMenuOpen ? <FiX /> : <FiMenu />}
-
-                </button>
-
             </div>
 
             {/* ==========================
+                MOBILE MENU BUTTON
+            ========================== */}
+
+            <button
+                className="menu-toggle"
+                onClick={toggleMenu}
+                aria-label="Toggle Menu"
+            >
+
+                {isMenuOpen ? <FiX /> : <FiMenu />}
+
+            </button>
+                        {/* ==========================
                 NAVIGATION
             ========================== */}
 
@@ -189,71 +181,57 @@ const Header = () => {
 
                 <ul className="nav-list">
 
-                    {navItems.map(
-                        (item, index) => (
+                    {navItems.map((item, index) => (
 
-                            <li
+                        <li
+                            key={item.name}
+                            onMouseEnter={() =>
+                                window.innerWidth > 768 &&
+                                setExpandedIndex(index)
+                            }
+                            onMouseLeave={() =>
+                                window.innerWidth > 768 &&
+                                setExpandedIndex(null)
+                            }
+                        >
 
-                                key={item.name}
-
-                                onMouseEnter={() =>
-                                    setExpandedIndex(
-                                        index
-                                    )
-                                }
-
-                                onMouseLeave={() =>
-                                    setExpandedIndex(
-                                        null
-                                    )
-                                }
-
+                            <a
+                                href={item.id}
+                                onClick={closeMenu}
                             >
+                                {item.name}
+                            </a>
 
-                                <a
-                                    href={item.id}
-                                    onClick={
-                                        closeMenu
-                                    }
-                                >
+                            {/* ==========================
+                                DROPDOWN
+                            ========================== */}
 
-                                    {item.name}
+                            {expandedIndex === index &&
+                                item.description &&
+                                item.description.length > 0 && (
 
-                                </a>
-                                                                {/* ==========================
-                                    DROPDOWN
-                                ========================== */}
+                                    <div className="dropdown-content">
 
-                                {expandedIndex === index &&
-                                    item.description &&
-                                    item.description.length > 0 && (
+                                        {item.description.map(
+                                            (desc, descIndex) => (
 
-                                        <div className="dropdown-content">
+                                                <div
+                                                    key={descIndex}
+                                                    className="dropdown-item"
+                                                >
+                                                    {desc}
+                                                </div>
 
-                                            {item.description.map(
-                                                (desc, descIndex) => (
+                                            )
+                                        )}
 
-                                                    <div
-                                                        key={descIndex}
-                                                        className="dropdown-item"
-                                                    >
+                                    </div>
 
-                                                        {desc}
+                                )}
 
-                                                    </div>
+                        </li>
 
-                                                )
-                                            )}
-
-                                        </div>
-
-                                    )}
-
-                            </li>
-
-                        )
-
-                    )}
+                    ))}
 
                 </ul>
 
@@ -266,9 +244,7 @@ const Header = () => {
                     className="header-btn"
                     onClick={closeMenu}
                 >
-
                     Get Started
-
                 </a>
 
             </nav>
