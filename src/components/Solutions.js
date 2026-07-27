@@ -11,18 +11,22 @@ import "aos/dist/aos.css";
 
 const Solutions = () => {
 
+    /* =====================================================
+       STATE
+    ===================================================== */
+
     const [solutions, setSolutions] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Currently visible solution
+    // Active solution shown in left panel
     const [activeIndex, setActiveIndex] = useState(0);
 
-    // Reference to every scroll section
+    // Scroll targets
     const sectionRefs = useRef([]);
 
-    /* ==========================================
-       AOS
-    ========================================== */
+    /* =====================================================
+       INITIALIZE AOS
+    ===================================================== */
 
     useEffect(() => {
 
@@ -31,15 +35,15 @@ const Solutions = () => {
             duration: 900,
             easing: "ease-out-cubic",
             once: true,
-            offset: 120
+            offset: 100
 
         });
 
     }, []);
 
-    /* ==========================================
-       Load JSON
-    ========================================== */
+    /* =====================================================
+       LOAD SOLUTIONS
+    ===================================================== */
 
     useEffect(() => {
 
@@ -57,12 +61,12 @@ const Solutions = () => {
 
                 const data = await response.json();
 
-                setSolutions(data.solutions);
+                setSolutions(data.solutions || []);
 
             }
-            catch (err) {
+            catch (error) {
 
-                console.error(err);
+                console.error(error);
 
             }
             finally {
@@ -77,9 +81,9 @@ const Solutions = () => {
 
     }, []);
 
-    /* ==========================================
-       Detect current section while scrolling
-    ========================================== */
+    /* =====================================================
+       INTERSECTION OBSERVER
+    ===================================================== */
 
     useEffect(() => {
 
@@ -91,15 +95,13 @@ const Solutions = () => {
 
                 entries.forEach((entry) => {
 
-                    if (entry.isIntersecting) {
+                    if (!entry.isIntersecting) return;
 
-                        const index = Number(
-                            entry.target.dataset.index
-                        );
+                    const index = Number(
+                        entry.target.dataset.index
+                    );
 
-                        setActiveIndex(index);
-
-                    }
+                    setActiveIndex(index);
 
                 });
 
@@ -107,7 +109,11 @@ const Solutions = () => {
 
             {
 
-                threshold: 0.55
+                root: null,
+
+                rootMargin: "-35% 0px -35% 0px",
+
+                threshold: 0
 
             }
 
@@ -123,9 +129,17 @@ const Solutions = () => {
 
         });
 
-        return () => observer.disconnect();
+        return () => {
+
+            observer.disconnect();
+
+        };
 
     }, [solutions]);
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
 
     if (loading) {
 
@@ -140,257 +154,330 @@ const Solutions = () => {
         );
 
     }
-        return (
 
-        <section
-            id="solutions"
-            className="solutions-section"
+    if (!solutions.length) {
+
+        return null;
+
+    }
+
+    /* =====================================================
+       CURRENT SOLUTION
+    ===================================================== */
+
+    const currentSolution = solutions[activeIndex];
+    return (
+
+<section
+    id="solutions"
+    className="solutions-section"
+>
+
+    {/* =====================================================
+        HEADER
+    ===================================================== */}
+
+    <div
+        className="solutions-header"
+        data-aos="fade-up"
+    >
+
+        <span className="solutions-badge">
+
+            Our Solutions
+
+        </span>
+
+        <h2>
+
+            Innovative Digital Solutions
+
+        </h2>
+
+        <p>
+
+            We design, develop and deliver enterprise-grade
+            software solutions that help organizations
+            modernize operations, improve customer experience,
+            and accelerate digital transformation.
+
+        </p>
+
+    </div>
+
+    {/* =====================================================
+        MAIN LAYOUT
+    ===================================================== */}
+
+    <div className="solutions-scroll-wrapper">
+
+        {/* =====================================================
+            LEFT PANEL
+        ===================================================== */}
+
+        <aside
+            className="solutions-sticky"
+            data-aos="fade-right"
         >
 
-            {/* Header */}
-
             <div
-                className="solutions-header"
-                data-aos="fade-up"
+                key={activeIndex}
+                className="solution-display-card solution-fade"
             >
 
-                <span className="solutions-badge">
+                {/* IMAGE */}
 
-                    Our Solutions
+                <div className="solution-image-container">
 
-                </span>
+                    <img
 
-                <h2>
+                        src={`${process.env.PUBLIC_URL}/${currentSolution.image}`}
 
-                    Innovative Digital Solutions
+                        alt={currentSolution.title}
 
-                </h2>
+                        className="solution-image"
 
-                <p>
+                    />
 
-                    We design, develop and deliver enterprise-grade
-                    software solutions that help organizations
-                    modernize operations, improve customer experience
-                    and accelerate digital transformation.
+                    <div className="solution-counter">
 
-                </p>
+                        {String(activeIndex + 1).padStart(2, "0")}
 
-            </div>
+                        <span>/</span>
 
-            {/* Scroll Area */}
-
-            <div className="solutions-scroll-wrapper">
-
-                {/* LEFT STICKY CARD */}
-
-                <div
-                    className="solutions-sticky"
-                    data-aos="fade-right"
-                >
-
-                    <div className="solution-display-card">
-
-                        <div className="solution-image-container">
-
-                            <img
-                                src={`${process.env.PUBLIC_URL}/${solutions[activeIndex].image}`}
-                                alt={solutions[activeIndex].title}
-                                className="solution-image"
-                            />
-
-                            <div className="solution-counter">
-
-                                {String(activeIndex + 1).padStart(2, "0")}
-                                <span>
-                                    /
-                                </span>
-                                {String(solutions.length).padStart(2, "0")}
-
-                            </div>
-
-                        </div>
-
-                        <div className="solution-display-content">
-
-                            <span className="solution-tag">
-
-                                Enterprise Solution
-
-                            </span>
-
-                            <h2>
-
-                                {solutions[activeIndex].title}
-
-                            </h2>
-
-                            <p>
-
-                                {solutions[activeIndex].description}
-
-                            </p>
-
-                            <ul className="solution-features">
-
-                                {solutions[activeIndex].details
-                                    ?.map((item, index) => (
-
-                                        <li
-                                            key={index}
-                                            data-aos="fade-up"
-                                            data-aos-delay={index * 80}
-                                        >
-
-                                            {item}
-
-                                        </li>
-
-                                    ))}
-
-                            </ul>
-
-                        </div>
+                        {String(solutions.length).padStart(2, "0")}
 
                     </div>
 
                 </div>
 
-                {/* RIGHT SCROLL TRACK */}
+                {/* CONTENT */}
 
-                <div className="solutions-track">
+                <div className="solution-display-content">
 
-                    {solutions.map((solution, index) => (
+                    <span className="solution-tag">
 
-                        <div
-
-                            key={solution.title}
-
-                            ref={(el) =>
-                                sectionRefs.current[index] = el
-                            }
-
-                            data-index={index}
-
-                            className="solution-trigger"
-
-                        >
-
-                            <div className="trigger-circle">
-
-                                {String(index + 1).padStart(2, "0")}
-
-                            </div>
-
-                            <div className="trigger-line" />
-
-                            <div className="trigger-content">
-
-                                <h3>
-
-                                    {solution.title}
-
-                                </h3>
-
-                                <p>
-
-                                    Scroll to explore this solution
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    ))}
-
-                </div>
-
-            </div>
-
-            {/* Footer */}
-
-            <div
-                className="solutions-footer"
-                data-aos="fade-up"
-            >
-
-                <div className="solutions-footer-content">
-
-                    <span className="solutions-footer-badge">
-
-                        Why Choose SyntaxLoom?
+                        Enterprise Solution
 
                     </span>
 
                     <h2>
 
-                        Building Future-Ready Digital Products
+                        {currentSolution.title}
 
                     </h2>
 
                     <p>
 
-                        We combine modern technologies, cloud-native
-                        architecture and agile development practices
-                        to deliver scalable, secure and high-performance
-                        software solutions that help businesses grow
-                        with confidence.
+                        {currentSolution.description}
 
                     </p>
 
-                    <div className="solutions-footer-stats">
+                    <ul className="solution-features">
 
-                        <div className="stat-card">
+                        {currentSolution.details?.map((detail, index) => (
 
-                            <h3>50+</h3>
+                            <li key={index}>
 
-                            <span>Projects Delivered</span>
+                                <span className="feature-check">
 
-                        </div>
+                                   ✓ 
 
-                        <div className="stat-card">
+                                </span>
 
-                            <h3>10+</h3>
+                                <span>
 
-                            <span>Industries Served</span>
+                                    {detail}
 
-                        </div>
+                                </span>
 
-                        <div className="stat-card">
+                            </li>
 
-                            <h3>99%</h3>
+                        ))}
 
-                            <span>Customer Satisfaction</span>
-
-                        </div>
-
-                    </div>
-
-                    <div className="solutions-footer-actions">
-
-                        <a
-                            href="#contact"
-                            className="solutions-primary-btn"
-                        >
-                            Start Your Project
-                        </a>
-
-                        <a
-                            href="#services"
-                            className="solutions-secondary-btn"
-                        >
-                            Explore Services
-                        </a>
-
-                    </div>
+                    </ul>
 
                 </div>
 
             </div>
 
-        </section>
+        </aside>
 
-    );
+        {/* =====================================================
+            RIGHT SIDE
+        ===================================================== */}
+
+        <div className="solutions-cards">
+
+            {solutions.map((solution, index) => (
+
+                <div
+
+                    key={solution.title}
+
+                    ref={(el) =>
+                        sectionRefs.current[index] = el
+                    }
+
+                    data-index={index}
+
+                    className={`solution-card ${
+                        activeIndex === index
+                            ? "active"
+                            : ""
+                    }`}
+
+                >
+
+                    <div className="solution-card-top">
+
+                        <div className="solution-card-icon">
+
+                            {activeIndex === index
+                                ? "✓"
+                                : String(index + 1).padStart(2, "0")}
+
+                        </div>
+
+                        <div className="solution-card-title">
+
+                            <h3>
+
+                                {solution.title}
+
+                            </h3>
+
+                            <span>
+
+                                Enterprise Solution
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p className="solution-card-description">
+
+                        {solution.description}
+
+                    </p>
+
+                </div>
+
+            ))}
+
+        </div>
+
+    </div>
+
+    {/* =====================================================
+        CTA
+    ===================================================== */}
+
+    <div
+        className="solutions-footer"
+        data-aos="fade-up"
+    >
+
+        <div className="solutions-footer-content">
+
+            <span className="solutions-footer-badge">
+
+                Why SyntaxLoom?
+
+            </span>
+
+            <h2>
+
+                Let's Build Something Amazing Together
+
+            </h2>
+
+            <p>
+
+                From idea validation to enterprise-scale
+                deployment, we help businesses create
+                reliable, scalable and future-ready
+                software solutions.
+
+            </p>
+
+        </div>
+
+        <div className="solutions-stats">
+
+            <div className="stat-card">
+
+                <h3>
+
+                    {solutions.length}+
+
+                </h3>
+
+                <span>
+
+                    Solutions
+
+                </span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>
+
+                    100%
+
+                </h3>
+
+                <span>
+
+                    Client Focused
+
+                </span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>
+
+                    24×7
+
+                </h3>
+
+                <span>
+
+                    Support
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div className="solutions-actions">
+
+            <button className="primary-btn">
+
+                Start Your Project
+
+            </button>
+
+            <button className="secondary-btn">
+
+                Contact Us
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+);
 
 };
 
