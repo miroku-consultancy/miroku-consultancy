@@ -488,7 +488,6 @@ const About = () => {
                             >
 
                                 Contact Us
-
                             </a>
 
                         </div>
