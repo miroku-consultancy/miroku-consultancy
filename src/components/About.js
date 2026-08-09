@@ -1,7 +1,8 @@
 import React, {
     useEffect,
     useMemo,
-    useState
+    useState,
+    useRef
 } from "react";
 
 import "./About.css";
@@ -11,13 +12,23 @@ import "aos/dist/aos.css";
 
 const About = () => {
 
-    const [aboutData, setAboutData] = useState(null);
+    const [aboutData, setAboutData] =
+        useState(null);
 
-    const [selectedSection, setSelectedSection] = useState(null);
+    const [selectedSection, setSelectedSection] =
+        useState(null);
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] =
+        useState(true);
 
-    const [error, setError] = useState("");
+    const [error, setError] =
+        useState("");
+
+    /* ==========================================
+       SCROLL REF
+    ========================================== */
+
+    const selectedRef = useRef(null);
 
     /* ==========================================
        AOS
@@ -46,9 +57,8 @@ const About = () => {
 
             try {
 
-                const response = await fetch(
-                    "/content.json"
-                );
+                const response =
+                    await fetch("/content.json");
 
                 if (!response.ok) {
 
@@ -129,7 +139,6 @@ const About = () => {
             return aboutData.sections.filter(
 
                 section =>
-
                     section.id !==
                     selectedSection.id
 
@@ -146,41 +155,7 @@ const About = () => {
        COMPANY STATS
     ========================================== */
 
-    const companyStats = [
-
-        // {
-
-        //     number: "50+",
-        //     label:
-        //         "Projects Delivered"
-
-        // },
-
-        // {
-
-        //     number: "10+",
-        //     label:
-        //         "Industries Served"
-
-        // },
-
-        // {
-
-        //     number: "99%",
-        //     label:
-        //         "Customer Satisfaction"
-
-        // },
-
-        // {
-
-        //     number: "24/7",
-        //     label:
-        //         "Support & Maintenance"
-
-        // }
-
-    ];
+    const companyStats = [];
 
     /* ==========================================
        LOADING
@@ -189,13 +164,9 @@ const About = () => {
     if (loading) {
 
         return (
-
             <div className="loading">
-
                 Loading...
-
             </div>
-
         );
 
     }
@@ -203,13 +174,9 @@ const About = () => {
     if (error) {
 
         return (
-
             <div className="loading">
-
                 {error}
-
             </div>
-
         );
 
     }
@@ -222,9 +189,7 @@ const About = () => {
 
     return (
 
-        <section
-            id="about"
-        >
+        <section id="about">
 
             <div className="about-container">
 
@@ -235,30 +200,24 @@ const About = () => {
                     data-aos="fade-up"
                 >
 
-                    <h2
-                        className="about-title"
-                    >
-
+                    <h2 className="about-title">
                         {aboutData.heading}
-
                     </h2>
 
-                    <p
-                        className="about-subtitle"
-                    >
-
+                    <p className="about-subtitle">
                         {aboutData.subtitle}
-
                     </p>
 
                 </div>
-                                {/* ==========================================
+
+                {/* ==========================================
                     FEATURED SECTION
                 ========================================== */}
 
                 {selectedSection && (
 
                     <div
+                        ref={selectedRef}
                         className="about-selected"
                         data-aos="fade-up"
                     >
@@ -275,29 +234,19 @@ const About = () => {
                             <div className="about-content">
 
                                 <span className="about-tag">
-
                                     About SyntaxLoom
-
                                 </span>
 
                                 <h3>
-
                                     {selectedSection.title}
-
                                 </h3>
 
                                 {selectedSection.description.map(
-
                                     (item, index) => (
-
                                         <p key={index}>
-
                                             {item}
-
                                         </p>
-
                                     )
-
                                 )}
 
                             </div>
@@ -307,8 +256,7 @@ const About = () => {
                     </div>
 
                 )}
-
-                {/* ==========================================
+                                {/* ==========================================
                     COMPANY STATISTICS
                 ========================================== */}
 
@@ -318,7 +266,6 @@ const About = () => {
                 >
 
                     {companyStats.map(
-
                         (stat, index) => (
 
                             <div
@@ -330,22 +277,13 @@ const About = () => {
                                 }
                             >
 
-                                <h3>
+                                <h3>{stat.number}</h3>
 
-                                    {stat.number}
-
-                                </h3>
-
-                                <span>
-
-                                    {stat.label}
-
-                                </span>
+                                <span>{stat.label}</span>
 
                             </div>
 
                         )
-
                     )}
 
                 </div>
@@ -354,12 +292,9 @@ const About = () => {
                     REMAINING CARDS
                 ========================================== */}
 
-                <div
-                    className="about-grid"
-                >
+                <div className="about-grid">
 
                     {remainingSections.map(
-
                         (section, index) => (
 
                             <div
@@ -378,56 +313,62 @@ const About = () => {
                                     loading="lazy"
                                 />
 
-                                <div
-                                    className="about-content"
-                                >
+                                <div className="about-content">
 
-                                    <span
-                                        className="about-tag"
-                                    >
-
+                                    <span className="about-tag">
                                         Learn More
-
                                     </span>
 
                                     <h3>
-
                                         {section.title}
-
                                     </h3>
 
                                     <p>
-
-                                        {
-                                            section
-                                                .description[0]
-                                        }
-
+                                        {section.description[0]}
                                     </p>
 
                                     <button
-                                        className="about-btn"
-                                        onClick={() =>
-                                            setSelectedSection(
-                                                section
-                                            )
-                                        }
-                                    >
+    className="about-btn"
+    onClick={() => {
 
-                                        Explore
+        setSelectedSection(section);
 
-                                    </button>
+        setTimeout(() => {
 
+            const element = selectedRef.current;
+
+            if (element) {
+
+                const y =
+                    element.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    100;
+
+                window.scrollTo({
+
+                    top: y,
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        }, 100);
+
+    }}
+>
+    Explore
+</button>
                                 </div>
 
                             </div>
 
                         )
-
                     )}
 
                 </div>
-                                {/* ==========================================
+
+                {/* ==========================================
                     CALL TO ACTION
                 ========================================== */}
 
@@ -436,13 +377,9 @@ const About = () => {
                     data-aos="fade-up"
                 >
 
-                    <div
-                        className="about-cta-content"
-                    >
+                    <div className="about-cta-content">
 
-                        <span
-                            className="about-cta-badge"
-                        >
+                        <span className="about-cta-badge">
 
                             Why Choose SyntaxLoom?
 
@@ -469,24 +406,19 @@ const About = () => {
 
                         </p>
 
-                        <div
-                            className="about-cta-actions"
-                        >
+                        <div className="about-cta-actions">
 
                             <a
                                 href="#services"
                                 className="about-primary-btn"
                             >
-
                                 Explore Services
-
                             </a>
 
                             <a
                                 href="#contact"
                                 className="about-secondary-btn"
                             >
-
                                 Contact Us
                             </a>
 
